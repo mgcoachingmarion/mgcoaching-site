@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /mentions-legales
+Disallow: /confidentialite
+
+Sitemap: https://mgcoaching.io/sitemap.xml
