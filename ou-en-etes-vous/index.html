@@ -233,16 +233,16 @@ class Component extends DCLogic {
     if (n === 0) {
       title = "Commencez par cocher";
       reading = "Rien de coché pour l'instant. Cochez les phrases qui vous parlent dans les sections 01 et 02 pour avoir votre diagnostic.";
-    } else if (n <= 2 && (this.state.rep || 0) === 0) {
+    } else if (n <= 2 && (this.state.rep || 0) <= 1) {
       title = "Un premier miroir";
       reading = "Vous cherchez surtout à mieux vous connaître. Le premier chapitre est fait pour ça : un test de personnalité débriefé en 90 minutes, pour poser un premier regard sur vous. C'est un point de départ, pas un accompagnement.";
-    } else if (n <= 4 && (this.state.rep || 0) <= 1) {
-      title = "Plus qu'un test";
-      reading = "Ce que vous décrivez ne se règle pas en une séance. Un test de personnalité vous donnerait un miroir ; le changement, lui, se construit dans la durée, en expérimentant entre les séances. Le Récit vous accompagne sur dix séances pour y arriver.";
-    } else if (false) {
+    } else if ((this.state.rep || 0) >= 2 && n <= 4) {
       title = "Un point précis à dénouer";
       reading = "Ce que vous décrivez est ciblé. Une séance unique peut suffire à poser un premier miroir et à repartir avec des pistes concrètes — c'est exactement ce que fait Le premier chapitre.";
-    } else if (false) {
+    } else if (n <= 4) {
+      title = "Plus qu'un test";
+      reading = "Ce que vous décrivez ne se règle pas en une séance. Un test de personnalité vous donnerait un miroir ; le changement, lui, se construit dans la durée, en expérimentant entre les séances. Le Récit vous accompagne sur dix séances pour y arriver.";
+    } else if (n <= 7) {
       title = "Plusieurs fils tirent ensemble";
       reading = "Il y a de quoi travailler, et plusieurs sujets se répondent. Commencez par Le premier chapitre pour voir ce qui se joue vraiment ; nous déciderons ensuite si un parcours plus long a du sens.";
     } else {
@@ -251,7 +251,8 @@ class Component extends DCLogic {
     }
 
     const tally = n === 0 ? 'Aucune phrase cochée' : (n === 1 ? '1 phrase sur 12 cochée' : n + ' phrases sur 12 cochées');
-    const offerName = n === 0 ? '' : (title === 'Un premier miroir' ? 'Le premier chapitre' : 'Le Récit');
+    const OFFER_BY_TITLE = { "Un premier miroir": "Le premier chapitre", "Un point précis à dénouer": "Le premier chapitre", "Plus qu'un test": "Le Récit", "Plusieurs fils tirent ensemble": "Le premier chapitre", "Un vrai chapitre à écrire": "Le Récit" };
+    const offerName = n === 0 ? '' : (OFFER_BY_TITLE[title] || 'Le Récit');
     const pct = Math.round((n / 12) * 100);
 
     const subject = encodeURIComponent('Où en êtes-vous — mes réponses');
