@@ -134,7 +134,7 @@
 
   <section class="rail" style="padding:calc(var(--space-8) * 1.8) 0 var(--space-8)">
     <h1 style="font-size:clamp(24px,3.4vw,40px);line-height:1.1;margin:0;letter-spacing:-0.01em">Où en êtes-vous ?</h1>
-    <div style="container-type:inline-size;margin:var(--space-6) 0 0"><p class="m-2l" style="font-family:'Prata',serif;color:#a1473e;font-size:min(21px,calc(100cqi / 36));line-height:1.4;margin:0;max-width:none;text-align:left"><span style="white-space:nowrap">Douze phrases. Cochez celles qui vous ressemblent en ce moment —</span><br><span style="white-space:nowrap">il n'y a pas de bonne réponse, seulement la vôtre.</span></p></div>
+    <div style="container-type:inline-size;margin:var(--space-6) 0 0"><p class="m-2l" style="font-family:'Prata',serif;color:#a1473e;font-size:min(21px,calc(100cqi / 36));line-height:1.4;margin:0;max-width:none;text-align:left"><span style="white-space:nowrap">Cochez les phrases qui vous parlent en ce moment.</span><br><span style="white-space:nowrap">Puis allez découvrir ma suggestion d'accompagnement en section 03.</span></p></div>
   </section>
 
   <section class="sec">
@@ -164,12 +164,20 @@
   <section class="sec">
     <div class="ch"><span class="chn">03</span>Votre lecture</div>
     <div style="max-width:var(--measure)">
-      <div style="border-top:3px solid var(--color-accent-700);padding-top:var(--space-4)">
-        <div style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-2)">{{ tally }}</div>
-        <h2 class="sub" style="font-size:clamp(20px,2.4vw,28px);line-height:1.35;margin:0 0 var(--space-3)">{{ title }}</h2>
-        <p style="font-size:17px;line-height:1.4;margin:0">{{ reading }}</p>
+      <div style="border-top:3px solid var(--color-accent-700);padding-top:var(--space-6)">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:var(--space-6)">
+          <div style="width:100%;max-width:240px;height:6px;background:var(--color-divider);border-radius:99px;overflow:hidden;margin-bottom:8px"><div style="height:100%;background:var(--color-accent-700);width:{{ pct }}%;transition:width .4s ease"></div></div>
+          <span style="font-size:14px;color:var(--color-neutral-700)">{{ tally }}</span>
+        </div>
+        <sc-if value="{{ offerName }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;margin-bottom:var(--space-4)">
+          <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#b5611a;font-family:'Prata',serif">Offre recommandée</span>
+          <span style="font-family:'Lexend Exa',sans-serif;font-weight:600;font-size:clamp(22px,2.6vw,28px);color:var(--color-accent-700);text-transform:uppercase">{{ offerName }}</span>
+        </div>
+        </sc-if>
+        <p style="font-size:17px;line-height:1.4;margin:0;text-align:center">{{ reading }}</p>
       </div>
-      <p style="font-size:17px;line-height:1.4;margin:var(--space-6) 0 var(--space-4)">Ce diagnostic n'est pas un verdict. Il sert à nommer un point de départ — le reste se dit de vive voix.</p>
+      <p style="font-size:17px;line-height:1.4;margin:var(--space-6) 0 var(--space-4)">Cette lecture n'est pas un verdict. Elle sert à nommer un point de départ — le reste se dit de vive voix.</p>
       <div style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
         <a class="btn btn-primary" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Premier appel offert</a>
         <a class="lk" href="/accompagnements" style="font-size:15px">Voir les accompagnements</a>
@@ -224,7 +232,7 @@ class Component extends DCLogic {
     let title, reading;
     if (n === 0) {
       title = "Commencez par cocher";
-      reading = "Rien de coché pour l'instant. Prenez les deux listes au-dessus dans l'ordre, sans réfléchir trop longtemps à chaque phrase.";
+      reading = "Rien de coché pour l'instant. Cochez les phrases qui vous parlent dans les sections 01 et 02 pour avoir votre diagnostic.";
     } else if (n <= 2 && (this.state.rep || 0) === 0) {
       title = "Un premier miroir";
       reading = "Vous cherchez surtout à mieux vous connaître. Le premier chapitre est fait pour ça : un test de personnalité débriefé en 90 minutes, pour poser un premier regard sur vous. C'est un point de départ, pas un accompagnement.";
@@ -242,7 +250,9 @@ class Component extends DCLogic {
       reading = "Plusieurs choses se répètent et se répondent : c'est un fonctionnement d'ensemble, pas un point isolé. Le Récit est fait pour ça — dix séances pour dénouer les schémas, expérimenter autrement et repartir avec vos propres outils.";
     }
 
-    const tally = n === 0 ? 'Aucune phrase cochée' : (n === 1 ? '1 phrase sur 12' : n + ' phrases sur 12');
+    const tally = n === 0 ? 'Aucune phrase cochée' : (n === 1 ? '1 phrase sur 12 cochée' : n + ' phrases sur 12 cochées');
+    const offerName = n === 0 ? '' : (title === 'Un premier miroir' ? 'Le premier chapitre' : 'Le Récit');
+    const pct = Math.round((n / 12) * 100);
 
     const subject = encodeURIComponent('Où en êtes-vous — mes réponses');
     const lines = picked.length ? picked.map(t => '- ' + t).join('\n') : '(aucune phrase cochée)';
@@ -250,7 +260,7 @@ class Component extends DCLogic {
     const to = 'contact@mgcoaching.io';
 
     return {
-      tally, title, reading,
+      tally, title, reading, offerName, pct,
       onToggle: () => this.setState(this.read()),
       mailHref: 'mailto:' + to + '?subject=' + subject + '&body=' + body,
       gmailHref: 'https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&su=' + subject + '&body=' + body,
