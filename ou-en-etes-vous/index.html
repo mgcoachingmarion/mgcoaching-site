@@ -36,6 +36,7 @@
 <script src="/_ds/broadsheet-cfa175fd-aa68-4274-9afd-873f9a1925e0/_ds_bundle.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@400;500;600;700&display=swap">
 <style>
+  @media (prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}.rv.in{opacity:1;transform:none}}
   .btn{border-radius:6px}
   /*lh*/body,p,li,dd,blockquote,figcaption{line-height:1.4}
   :root{
@@ -200,6 +201,15 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
+
+  componentDidMount() {
+    const reveal = () => { const h = window.innerHeight; document.querySelectorAll('.rv:not(.in)').forEach(el => { if (el.getBoundingClientRect().top < h * 0.92) el.classList.add('in'); }); };
+    this._rv = reveal;
+    document.querySelectorAll('#dc-root section, #dc-root blockquote').forEach(el => { if (el.getBoundingClientRect().top > window.innerHeight) el.classList.add('rv'); });
+    window.addEventListener('scroll', reveal, { passive: true }); document.addEventListener('scroll', reveal, { passive: true, capture: true });
+    reveal(); this._rvT = setTimeout(() => document.querySelectorAll('.rv').forEach(el => el.classList.add('in')), 4000);
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this._rv); document.removeEventListener('scroll', this._rv, true); clearTimeout(this._rvT); }
   state = { picked: [] };
 
   read() {
