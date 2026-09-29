@@ -9,28 +9,30 @@
 <x-dc>
 <helmet>
 <!-- SEO -->
-<link rel="canonical" href="https://mgcoaching.io/echangeons">
-<link rel="alternate" hreflang="fr-FR" href="https://mgcoaching.io/echangeons">
-<link rel="alternate" hreflang="x-default" href="https://mgcoaching.io/echangeons">
+<link rel="canonical" href="https://mgcoaching.io/">
+<link rel="alternate" hreflang="fr-FR" href="https://mgcoaching.io/">
+<link rel="alternate" hreflang="x-default" href="https://mgcoaching.io/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="MG.Coaching">
-<meta property="og:title" content="Réserver un appel découverte gratuit | MG.Coaching">
-<meta property="og:description" content="Réservez un appel découverte de 30 minutes offert, en visio partout en France, ou écrivez-moi d'abord. Réponse sous 48 heures.">
-<meta property="og:url" content="https://mgcoaching.io/echangeons">
+<meta property="og:title" content="Coach holistique en visio — MG.Coaching | Marion Génot">
+<meta property="og:description" content="Coaching holistique en visio, partout en France : comprendre vos mécanismes, apaiser vos émotions et passer à l'action. Appel découverte de 30 min offert.">
+<meta property="og:url" content="https://mgcoaching.io/">
 <meta property="og:image" content="https://mgcoaching.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://mgcoaching.io/#mgcoaching","name":"MG.Coaching","url":"https://mgcoaching.io/","image":"https://mgcoaching.io/og-image.png","email":"contact@mgcoaching.io","description":"Coaching holistique en visio : comprendre vos mécanismes, traverser vos émotions, passer à l'action.","areaServed":{"@type":"Country","name":"France"},"availableLanguage":"fr","sameAs":["https://www.instagram.com/mg.coaching.marion/","https://substack.com/@marionmgcoaching"],"priceRange":"140 € – 1 100 €","founder":{"@type":"Person","name":"Marion Génot","jobTitle":"Coach holistique","alumniOf":["NEOMA Business School","École de Coaching Holistique"]}}</script>
 <!-- /SEO -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Échangeons | MG.Coaching","url":"https://mgcoaching.io/echangeons","description":"Réservez un appel découverte de 30 minutes offert, en visio partout en France, ou écrivez-moi d'abord.","isPartOf":{"@type":"WebSite","name":"MG.Coaching","url":"https://mgcoaching.io/"}}</script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Réservez un appel découverte de 30 minutes offert, en visio partout en France, ou écrivez-moi d'abord. Réponse sous 48 heures.">
-<title>MG.Coaching | Echangeons | Coach émotions & mindset</title>
+<meta name="description" content="Coaching holistique en visio, partout en France : comprendre vos mécanismes, apaiser vos émotions et passer à l'action. Appel découverte de 30 min offert.">
+<title>MG.Coaching | Coach émotions & mindset</title>
 <link rel="stylesheet" href="/_ds/broadsheet-cfa175fd-aa68-4274-9afd-873f9a1925e0/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Prata&family=Nunito:ital,wght@0,300..800;1,300..700&display=swap">
@@ -45,9 +47,12 @@
     .hdrnav a{white-space:nowrap;flex:none;scroll-snap-align:start;font-size:14px}
     .hdrnav a.btn{padding:8px 14px !important;font-size:14px !important}
   }
-  @media (prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}.rv.in{opacity:1;transform:none}}
   .btn{border-radius:6px}
+  @media (prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}.rv.in{opacity:1;transform:none}}
+  .pill{white-space:normal !important;flex:0 1 auto !important;text-wrap:balance}
   /*lh*/body,p,li,dd,blockquote,figcaption{line-height:1.4}
+  @media (min-width:721px){.h1l{white-space:nowrap}}
+  @media (max-width:720px){.hero{grid-template-columns:1fr !important}.herot{margin:calc(var(--space-8) * -1) var(--space-4) 0 !important}}
   :root{
     --measure:403px;
     --font-heading:'Lexend Exa',sans-serif;
@@ -93,21 +98,27 @@
   .accent{color:#b5611a}
   body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
   a{color:inherit;text-decoration:none}
-  p,li{text-align:justify;hyphens:auto}
+  p{text-align:justify;hyphens:auto}
+  h1,h2,h3,h4,.lead{text-align:left}
+  li{hyphens:auto}
   .ch,footer,label,summary{text-align:left}
   .navlink{font-size:15px;color:var(--color-neutral-800)}
   .navlink:hover{color:var(--color-accent-700)}
   .lk{color:var(--color-accent-700);border-bottom:1px solid var(--color-accent-700)}
   .lk:hover{color:var(--color-accent-2-700);border-bottom-color:var(--color-accent-2-700)}
+  .ph{position:relative;background:var(--color-accent-100);background-image:repeating-linear-gradient(135deg,color-mix(in srgb,var(--color-accent-700) 12%,transparent) 0 6px,transparent 6px 12px);display:flex;align-items:flex-end;padding:var(--space-2)}
+  .phl{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-800)}
   .ch{font-family:'Prata',serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#b5611a}
   .chn{font-family:'Prata',serif;font-size:34px;line-height:1;letter-spacing:0;color:#f19c46;display:block;margin-bottom:6px}
   .sec{padding-bottom:calc(var(--space-8) * 1.6);display:grid;grid-template-columns:minmax(0,7em) minmax(0,1fr);gap:var(--space-8)}
   .rail{margin-left:calc(7em + var(--space-8))}
   @media (max-width:720px){.rail{margin-left:0}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee{animation:marquee 60s linear infinite}
+  @media (prefers-reduced-motion:reduce){.marquee{animation:none}}
   @media (max-width:720px){.sec{grid-template-columns:1fr;gap:var(--space-4)}}
-  textarea.input{min-height:8em;resize:vertical;font-family:var(--font-body)}
 
-  @media (max-width:900px){
+  @media (max-width:900px){.vidwrap{padding:16px !important}.vidbox{max-width:none !important}
     header>div{padding:var(--space-2) var(--space-4) 0 !important;row-gap:0 !important;align-items:center !important}
     header nav{flex-wrap:nowrap !important;overflow-x:auto;gap:var(--space-4) !important;width:calc(100% + var(--space-4));margin-right:calc(var(--space-4) * -1);padding-right:var(--space-4);scrollbar-width:none;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(to right,#000 85%,transparent)}
     header nav::-webkit-scrollbar{display:none}
@@ -116,6 +127,7 @@
     .m-h1{font-size:22px !important;line-height:1.25 !important}
     .m-h1 .h1l{white-space:normal !important}
     .m-h1 br,.m-2l br{display:none}
+    .m-h1 .h1l:not(:last-child)::after,.m-2l span:not(:last-child)::after{content:" "}
     .m-2l{font-size:17px !important}
     .m-2l span{white-space:normal !important}
     .m-sub{font-size:16px !important}
@@ -132,69 +144,117 @@
       <a class="navlink" href="/accompagnements">Accompagnements</a>
       <a class="navlink" href="/mon-parcours">Mon parcours</a>
       <a class="navlink" href="/ou-en-etes-vous">Où en êtes-vous</a>
-      <a class="navlink" href="/echangeons" style="color:var(--color-accent-700)">Échangeons</a>
+      <a class="navlink" href="/echangeons">Échangeons</a>
+      <a class="btn btn-primary" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Premier appel offert</a>
     </nav>
       </div>
   </header>
 
-  <section class="rail" style="padding:calc(var(--space-8) * 1.8) 0 var(--space-8)">
-    <div class="ch" style="margin-bottom:var(--space-3)">Coach Emotions & Mindset en visio — contacts</div>
-    <h1 style="font-size:clamp(24px,3.4vw,40px);line-height:1.1;margin:0;letter-spacing:-0.01em">Le premier mot</h1>
+ <section class="hero" style="padding:calc(var(--space-8) * 1.4) 0 calc(var(--space-8) * 1.6);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);align-items:center">
+    <div style="position:relative;border-radius:6px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(53,18,1,0.4),0 16px 32px -16px rgba(53,18,1,0.22)">
+      <img src="/uploads/livre-fenetre.jpg" alt="Un livre ouvert près d'une fenêtre, éclairé par le soleil couchant sur la campagne" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 55%;filter:saturate(0.82) contrast(0.9) brightness(1.05)">
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(245,225,197,0.16),rgba(245,225,197,0.08));box-shadow:inset 0 0 70px rgba(53,18,1,0.35);pointer-events:none"></div>
+    </div>
+    <div class="herot" style="position:relative;z-index:1;min-width:0;align-self:start;margin-top:12%;margin-left:calc(var(--space-8) * -2.2);background:#fbeedb;border-radius:3px;padding:var(--space-8) var(--space-6);box-shadow:0 24px 48px -20px rgba(53,18,1,0.35),0 6px 14px -8px rgba(53,18,1,0.18)">
+      <div style="display:flex;gap:var(--space-4);align-items:stretch"><div aria-hidden="true" style="flex:none;width:4px;background:#f19c46;border-radius:2px"></div><div style="container-type:inline-size;min-width:0;flex:1"><h1 class="m-h1" style="font-size:min(25px,calc(100cqi / 26));line-height:1.3;font-weight:600;margin:0;letter-spacing:-0.01em"><span class="h1l">Redevenez le personnage principal</span><br><span class="h1l">de votre histoire</span></h1></div></div>
+    </div>
+  </section>
+
+  <section style="padding-bottom:calc(var(--space-8) * 1.6);display:grid;gap:var(--space-4)">
+    <div style="display:grid;gap:6px">
+      <div class="ch">Les livres que l'on pourrait ouvrir</div>
+      <h2 style="font-size:clamp(18px,2vw,22px);line-height:1.2;margin:0">Lequel vous parle ?</h2>
+    </div>
+    <div style="max-width:680px;display:flex;flex-direction:column;gap:12px">
+      <a href="/ou-en-etes-vous" style="display:flex;align-items:center;padding:14px 18px;background:#fbeedb;border-left:8px solid #e3b8ab;border-radius:0 4px 4px 0;box-shadow:0 8px 16px -10px rgba(53,18,1,0.25);text-decoration:none;color:var(--color-text);transition:transform .18s" style-hover="transform:translateX(6px)">
+        <span style="font-size:16px;line-height:1.35">Je me connais mieux et j'apprends à gérer ma colère grâce à une routine personnalisée</span>
+      </a>
+      <a href="/ou-en-etes-vous" style="display:flex;align-items:center;padding:14px 18px;background:#fbeedb;border-left:8px solid #cd8a79;border-radius:0 4px 4px 0;box-shadow:0 8px 16px -10px rgba(53,18,1,0.25);text-decoration:none;color:var(--color-text);transition:transform .18s" style-hover="transform:translateX(6px)">
+        <span style="font-size:16px;line-height:1.35">J’apprends à décharger mes émotions au quotidien pour qu’elles ne s’accumulent plus</span>
+      </a>
+      <a href="/ou-en-etes-vous" style="display:flex;align-items:center;padding:14px 18px;background:#fbeedb;border-left:8px solid #a1473e;border-radius:0 4px 4px 0;box-shadow:0 8px 16px -10px rgba(53,18,1,0.25);text-decoration:none;color:var(--color-text);transition:transform .18s" style-hover="transform:translateX(6px)">
+        <span style="font-size:16px;line-height:1.35">Je prends ma juste place et j’agis pour créer et transformer mon projet en réalité</span>
+      </a>
+      <a href="/ou-en-etes-vous" style="display:flex;align-items:center;padding:14px 18px;background:#fbeedb;border-left:8px solid #6e2f28;border-radius:0 4px 4px 0;box-shadow:0 8px 16px -10px rgba(53,18,1,0.25);text-decoration:none;color:var(--color-text);transition:transform .18s" style-hover="transform:translateX(6px)">
+        <span style="font-size:16px;line-height:1.35">Je renforce mon estime de moi pour appréhender mon anxiété au quotidien</span>
+      </a>
+      <div aria-hidden="true" style="height:3px;background:#6b4632;margin-top:6px"></div>
+      <a href="/accompagnements#faq-problematiques" style="display:inline-block;margin-top:6px;font-size:15px">D’autres livres →</a>
+    </div>
   </section>
 
   <section class="sec">
-    <div class="ch"><span class="chn">01</span>Prendre contact</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:var(--space-6);align-items:start">
-      <div style="background:#fbeedb;border-radius:4px;padding:var(--space-8) var(--space-6);display:grid;grid-template-rows:subgrid;grid-row:span 4;align-content:start;row-gap:0;min-width:0;box-shadow:0 30px 60px -30px rgba(53,18,1,0.38),0 10px 22px -12px rgba(53,18,1,0.18)">
-        <div style="font-family:'Prata',serif;font-size:14px;color:#f19c46;margin-bottom:var(--space-2)">Réserver</div>
-        <h2 class="sub cta" style="font-size:clamp(20px,2.2vw,26px);line-height:1.2;margin:0 0 var(--space-3)">Un échange de trente minutes, gratuit</h2>
-        <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-6)">On échange sur vos besoins, vos attentes et le bon format — sans engagement.</p>
-        <div style="align-self:start">
-          <a class="btn btn-primary" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Choisir un créneau</a>
-          <p style="font-size:14px;line-height:1.4;margin:var(--space-3) 0 0;color:var(--color-neutral-700)">Vous recevez l'invitation avec un lien Google Meet</p>
-        </div>
-      </div>
-      <div style="background:#fbeedb;border-radius:4px;padding:var(--space-8) var(--space-6);display:grid;grid-template-rows:subgrid;grid-row:span 4;align-content:start;row-gap:0;min-width:0;box-shadow:0 30px 60px -30px rgba(53,18,1,0.38),0 10px 22px -12px rgba(53,18,1,0.18)">
-        <div style="font-family:'Prata',serif;font-size:14px;color:#f19c46;margin-bottom:var(--space-2)">Écrire</div>
-        <h2 class="sub cta" style="font-size:clamp(20px,2.2vw,26px);line-height:1.2;margin:0 0 var(--space-3)">Ou me poser une question d'abord</h2>
-        <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-6)">Réponse sous 48 heures, du lundi au vendredi.</p>
-        <div style="align-self:start">
-          <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
-            <a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@mgcoaching.io&su=Prise%20de%20contact%20%E2%80%94%20MG.Coaching&body=Bonjour%20Marion%2C%0A%0ANom%20et%20pr%C3%A9nom%20%3A%20%0A%C3%82ge%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0AO%C3%B9%20j'en%20suis%20%3A%20%0AMes%20questions%20%3A%20%0A%0AMerci%2C%0A" target="_blank" rel="noopener" style="text-decoration:none">Gmail</a>
-            <a class="btn btn-secondary" href="mailto:contact@mgcoaching.io?subject=Prise%20de%20contact%20%E2%80%94%20MG.Coaching&body=Bonjour%20Marion%2C%0A%0ANom%20et%20pr%C3%A9nom%20%3A%20%0A%C3%82ge%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0AO%C3%B9%20j'en%20suis%20%3A%20%0AMes%20questions%20%3A%20%0A%0AMerci%2C%0A" style="text-decoration:none">Outlook</a>
-          </div>
-          <p style="font-size:14px;line-height:1.4;margin:var(--space-3) 0 0;color:var(--color-neutral-700)">Le brouillon s'ouvre prérempli — il n'y a qu'à compléter.</p>
+    <div class="ch"><span class="chn">01</span>Le constat</div>
+    <div style="font-size:17px;line-height:1.4;text-align:justify;hyphens:auto">
+      <p class="lead" style="margin:0 0 var(--space-4);font-size:clamp(20px,2.4vw,28px);line-height:1.35">Vous avancez, plutôt bien — le travail, la famille, le quotidien : vous tenez bon.</p>
+      <p style="margin:0 0 var(--space-4)">Et pourtant, <strong>quelque chose se répète</strong>. Trop de dévouement, trop de contrôle, trop d'émotions ou une coupure avec vous-même. Vous comprenez parfois d'où cela vient, mais lorsque la vie vacille, les mêmes mécanismes reprennent le dessus.</p>
+      <p style="margin:0 0 var(--space-4)">Ils viennent de votre histoire, de votre éducation, de tout ce que vous avez appris pour vous adapter. Ils vous ont été utiles. <strong>Aujourd'hui, vous pouvez les remettre à leur juste place, et retrouver la vôtre.</strong></p>
+      <p style="margin:0 0 var(--space-4)">Je vous transmets des clés et des outils pour mieux vous comprendre et savoir <strong>traverser vos tempêtes intérieures par vous-même</strong>.</p>
+      <p style="margin:0 0 var(--space-4)">Puis je m'efface.</p>
+      <p style="margin:0"><strong class="accent">Le prochain chapitre, vous l'écrivez.</strong></p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="ch"><span class="chn">02</span>On parle de quoi, vraiment ?</div>
+    <div style="max-width:var(--measure)">
+      <div class="vidwrap" style="background:#fbeedb;border-radius:14px;box-shadow:0 18px 36px -20px rgba(53,18,1,0.35),0 6px 12px -8px rgba(53,18,1,0.18);padding:48px;display:flex;justify-content:center">
+        <div class="vidbox" style="aspect-ratio:9/19.5;max-width:340px;width:100%;border-radius:4px;overflow:hidden;background:#000">
+          <iframe src="https://drive.google.com/file/d/1W2yHOS15hO_-Rzp6sUEZfSK1yD3FNd-O/preview" style="width:100%;height:100%;border:0" allow="autoplay" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"></iframe>
         </div>
       </div>
     </div>
   </section>
 
   <section class="sec">
-    <div class="ch"><span class="chn">02</span>Me suivre</div>
-    <div style="min-width:0">
-    <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-6)">Pour rester en contact, au fil de nos histoires.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--space-6)">
-      <a href="https://www.instagram.com/mg.coaching.marion/" target="_blank" rel="noopener" aria-label="Instagram — @mg.coaching.marion" style="display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4) var(--space-6);background:#fbeedb;border-radius:14px;text-decoration:none;color:inherit;box-shadow:0 18px 36px -20px rgba(53,18,1,0.35),0 6px 12px -8px rgba(53,18,1,0.18);transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-3px);box-shadow:0 26px 44px -20px rgba(53,18,1,0.42),0 8px 16px -8px rgba(53,18,1,0.22)">
-        <span aria-hidden="true" style="flex:none;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#a1473e;color:#fbeedb;box-shadow:0 8px 16px -8px rgba(161,71,62,0.7)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"></circle></svg></span>
-        <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
-          <span style="font-family:'Prata',serif;font-size:14px;color:#f19c46">Instagram</span>
-          <span style="font-size:clamp(16px,1.7vw,19px);line-height:1.3;color:var(--color-accent-700);overflow-wrap:anywhere">@mg.coaching.marion</span>
-        </span>
-      </a>
-      <a href="https://marionmgcoaching.substack.com/subscribe" target="_blank" rel="noopener" aria-label="Ma newsletter — s'abonner" style="display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4) var(--space-6);background:#fbeedb;border-radius:14px;text-decoration:none;color:inherit;box-shadow:0 18px 36px -20px rgba(53,18,1,0.35),0 6px 12px -8px rgba(53,18,1,0.18);transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-3px);box-shadow:0 26px 44px -20px rgba(53,18,1,0.42),0 8px 16px -8px rgba(53,18,1,0.22)">
-        <span aria-hidden="true" style="flex:none;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#a1473e;color:#fbeedb;box-shadow:0 8px 16px -8px rgba(161,71,62,0.7)"><svg width="22" height="24" viewBox="0 0 22 24" fill="currentColor"><rect x="1" y="1" width="20" height="3"></rect><rect x="1" y="6.5" width="20" height="3"></rect><path d="M1 12h20v11l-10-5.6L1 23z"></path></svg></span>
-        <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
-          <span style="font-family:'Prata',serif;font-size:14px;color:#f19c46">Ma newsletter</span>
-          <span style="font-size:clamp(16px,1.7vw,19px);line-height:1.3;color:var(--color-accent-700);overflow-wrap:anywhere">@marionmgcoaching</span>
-        </span>
-      </a>
+    <a class="ch" href="/accompagnements"><span class="chn">03</span>Notre champ d'action</a>
+    <div style="display:grid;grid-template-columns:minmax(0,var(--measure)) minmax(0,1fr);gap:var(--space-8);align-items:start">
+      <div>
+      <h2 class="sub" style="font-size:clamp(20px,2.4vw,28px);line-height:1.35;margin:0 0 var(--space-4);max-width:var(--measure)">Comprendre. Faire autrement.</h2>
+      <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-4);max-width:var(--measure)">Je vous propose un espace de réflexion guidé, qui s'adapte à votre parcours et à vos besoins, pour vous permettre de mieux comprendre ce qui se joue en vous et de <strong>choisir comment y répondre</strong>.</p>
+      <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-4);max-width:var(--measure)">Je m'appuie sur le corps, les pensées et les émotions pour construire avec vous des outils et des routines qui vous correspondent. Le plus souvent, <strong>tout commence par mettre des mots sur ce que vous n'aviez pas encore perçu</strong>.</p>
+      <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-4);max-width:var(--measure)">Nous travaillons ainsi à :</p>
+      <div>
+        <div>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--space-1)">
+            <li style="display:flex;gap:var(--space-3);font-size:17px;line-height:1.4;text-align:left"><span style="color:var(--color-accent-500)" aria-hidden="true">–</span><span><span style="color:var(--color-accent-700)">Voir clair</span> : reconnaître vos habitudes, et comprendre en quoi cela vous sert</span></li>
+            <li style="display:flex;gap:var(--space-3);font-size:17px;line-height:1.4;text-align:left"><span style="color:var(--color-accent-500)" aria-hidden="true">–</span><span><span style="color:var(--color-accent-700)">Traverser</span> : nommer et écouter les messages de vos émotions</span></li>
+            <li style="display:flex;gap:var(--space-3);font-size:17px;line-height:1.4;text-align:left"><span style="color:var(--color-accent-500)" aria-hidden="true">–</span><span><span style="color:var(--color-accent-700)">Agir</span> : expérimenter autrement, un pas après l'autre, jusqu'à ce que cela devienne naturel.</span></li>
+          </ul>
+          <p style="font-size:17px;line-height:1.4;margin:var(--space-6) 0 0">Nous ne remontons pas le fil de votre passé : <strong>nous partons de là où vous êtes</strong>.</p>
+          <a class="lk" href="/accompagnements" style="font-size:15px;display:inline-block;margin-top:var(--space-6)">Mes accompagnements</a>
+        </div>
+      </div>
     </div>
-  </div>
+
+      <img src="/uploads/sentier-randonnee.jpg" alt="Une personne en chaussures de randonnée avance sur un sentier de bruyère, dans la lumière du soleil couchant" style="display:block;box-shadow:0 30px 60px -30px rgba(53,18,1,0.38),0 10px 22px -12px rgba(53,18,1,0.18);border-radius:6px;align-self:start;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center 45%;filter:saturate(0.82) contrast(0.9) brightness(1.05)">
+    </div>
   </section>
 
-  <footer style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap;font-size:13.5px;color:var(--color-neutral-700)">
+  <section class="sec">
+    <a class="ch" href="/mon-parcours"><span class="chn">04</span>Qui suis-je</a>
+    <div style="display:grid;grid-template-columns:minmax(0,var(--measure)) minmax(0,1fr);gap:var(--space-8);align-items:stretch">
+      <div>
+        <h2 class="sub" style="font-size:clamp(20px,2.4vw,28px);line-height:1.35;margin:0 0 var(--space-4)">Je suis Marion.</h2>
+        <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-4)">Ce que je transmets, je l'ai d'abord cherché pour moi — trente-cinq ans d'exploration, de rencontres et de cheminement, avec une conviction qui n'a pas bougé : <span style="color:var(--color-accent-2-700)">notre évolution nous appartient.</span></p>
+        <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-4)"><strong>C'est pourquoi, je vous accompagne à redevenir le personnage principal de votre histoire.</strong></p>
+        <a class="lk" href="/mon-parcours" style="font-size:15px">Mon parcours</a>
+      </div>
+      <img src="/uploads/portrait-accueil.jpg" alt="Portrait de Marion, souriante, le menton posé sur la main, devant une porte en bois rouge" style="display:block;box-shadow:0 30px 60px -30px rgba(53,18,1,0.38),0 10px 22px -12px rgba(53,18,1,0.18);border-radius:6px;align-self:start;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:62% center;filter:saturate(0.82) contrast(0.9) brightness(1.05)">
+    </div>
+  </section>
+
+  <section class="rail" style="padding:calc(var(--space-8) * 1.2) 0 calc(var(--space-8) * 1.6)">
+    <h2 class="sub cta" style="font-size:clamp(26px,3.4vw,44px);line-height:1.05;margin:0 0 var(--space-6);letter-spacing:-0.03em">Vous avez compris.<br>Il est temps d'écrire la suite...</h2>
+    <div style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+      <a class="btn btn-primary" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Appel découverte</a>
+      <a class="lk" href="/echangeons" style="font-size:15px">Échangeons</a>
+    </div>
+  </section>
+
+  <footer style="display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;font-size:13.5px;color:var(--color-neutral-700)">
     <span></span>
-    <span style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap"><a class="navlink" href="https://www.instagram.com/mg.coaching.marion/" target="_blank" rel="noopener">Instagram</a><a class="navlink" href="https://substack.com/@marionmgcoaching" target="_blank" rel="noopener">Substack</a><a class="navlink" href="/mentions-legales">Mentions légales</a><a class="navlink" href="/confidentialite">Confidentialité</a><span style="display:inline-flex;align-items:center;gap:8px"><img src="/logo-mg-signature.png" alt="" aria-hidden="true" width="14" height="20" style="display:block;height:20px;width:auto">© MG.Coaching</span></span>
+    <span style="display:flex;gap:var(--space-4);flex-wrap:wrap"><a class="navlink" href="https://www.instagram.com/mg.coaching.marion/" target="_blank" rel="noopener">Instagram</a><a class="navlink" href="https://substack.com/@marionmgcoaching" target="_blank" rel="noopener">Substack</a><a class="navlink" href="/mentions-legales">Mentions légales</a><a class="navlink" href="/confidentialite">Confidentialité</a><span>© MG.Coaching</span></span>
   </footer>
 </div>
 </x-dc>
@@ -209,7 +269,7 @@ class Component extends DCLogic {
     reveal(); this._rvT = setTimeout(() => document.querySelectorAll('.rv').forEach(el => el.classList.add('in')), 4000);
   }
   componentWillUnmount() { window.removeEventListener('scroll', this._rv); document.removeEventListener('scroll', this._rv, true); clearTimeout(this._rvT); }
-}
-</script>
+  renderVals() { return {}; }
+}</script>
 </body>
 </html>
