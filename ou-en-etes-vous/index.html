@@ -1,3 +1,4 @@
+<!-- Page : ou-en-etes-vous -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -119,6 +120,7 @@
     .m-h1{font-size:22px !important;line-height:1.25 !important}
     .m-h1 .h1l{white-space:normal !important}
     .m-h1 br,.m-2l br{display:none}
+    .m-h1 .h1l:not(:last-child)::after,.m-2l span:not(:last-child)::after{content:" "}
     .m-2l{font-size:17px !important}
     .m-2l span{white-space:normal !important}
     .m-sub{font-size:16px !important}
@@ -174,17 +176,13 @@
     <div class="ch"><span class="chn">03</span>Votre lecture</div>
     <div style="max-width:var(--measure)">
       <div style="border-top:3px solid var(--color-accent-700);padding-top:var(--space-6)">
-        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:var(--space-6)">
-          <div style="width:100%;max-width:240px;height:6px;background:var(--color-divider);border-radius:99px;overflow:hidden;margin-bottom:8px"><div style="height:100%;background:var(--color-accent-700);width:{{ pct }}%;transition:width .4s ease"></div></div>
-          <span style="font-size:14px;color:var(--color-neutral-700)">{{ tally }}</span>
-        </div>
         <sc-if value="{{ offerName }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;margin-bottom:var(--space-4)">
           <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#b5611a;font-family:'Prata',serif">Offre recommandée</span>
           <span style="font-family:'Lexend Exa',sans-serif;font-weight:600;font-size:clamp(22px,2.6vw,28px);color:var(--color-accent-700);text-transform:uppercase">{{ offerName }}</span>
         </div>
         </sc-if>
-        <p style="font-size:17px;line-height:1.4;margin:0;text-align:center">{{ reading }}</p>
+        <p style="font-size:17px;line-height:1.4;margin:0;text-align:justify;hyphens:auto">{{ reading }}</p>
       </div>
       <p style="font-size:17px;line-height:1.4;margin:var(--space-6) 0 var(--space-4)">Cette lecture n'est pas un verdict. Elle sert à nommer un point de départ — le reste se dit de vive voix.</p>
       <div style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
@@ -201,7 +199,7 @@
         <h2 class="sub cta" style="font-size:clamp(20px,2.2vw,26px);line-height:1.2;margin:0 0 var(--space-3)">Partagez-moi vos réponses</h2>
         <div style="align-self:start">
           <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
-            <a class="btn btn-primary" href="{{ gmailHref }}" target="_blank" rel="noopener" style="text-decoration:none">Gmail</a>
+            <a class="btn btn-primary" href="{{ gmailHref }}" style="text-decoration:none">Gmail</a>
             <a class="btn btn-secondary" href="{{ mailHref }}" style="text-decoration:none">Outlook</a>
           </div>
           <p style="font-size:14px;line-height:1.4;margin:var(--space-3) 0 0;color:var(--color-neutral-700)">Le brouillon s'ouvre prérempli — il n'y a qu'à compléter. Vos réponses ne sont pas enregistrées sur le site. Elles sont partagées uniquement si vous l'envoyez.</p>
@@ -271,7 +269,7 @@ class Component extends DCLogic {
       tally, title, reading, offerName, pct,
       onToggle: () => this.setState(this.read()),
       mailHref: 'mailto:' + to + '?subject=' + subject + '&body=' + body,
-      gmailHref: 'https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&su=' + subject + '&body=' + body,
+      gmailHref: 'mailto:' + to + '?subject=' + subject + '&body=' + body,
       outlookHref: 'https://outlook.live.com/mail/0/deeplink/compose?to=' + to + '&subject=' + subject + '&body=' + body,
     };
   }
