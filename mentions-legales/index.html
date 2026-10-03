@@ -37,12 +37,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@400;500;600;700&display=swap">
 <style>
   @media (max-width:720px){
-    .hdrbar{flex-wrap:nowrap !important;padding-left:var(--space-4) !important;padding-right:0 !important}
+    .hdrbar{flex-wrap:nowrap !important;position:relative}
     .hdrlogo{height:36px !important}
-    .hdrnav{flex-wrap:nowrap !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;gap:var(--space-3) !important;flex:1 1 auto;min-width:0;justify-content:flex-start;padding:2px var(--space-4) 2px 0;mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent 100%);-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent 100%)}
-    .hdrnav::-webkit-scrollbar{display:none}
-    .hdrnav a{white-space:nowrap;flex:none;scroll-snap-align:start;font-size:14px}
-    .hdrnav a.btn{padding:8px 14px !important;font-size:14px !important}
+    .navtoggle-btn{display:flex !important;align-items:center;justify-content:center;width:40px;height:40px;cursor:pointer;flex:none;margin-left:auto}
+    .hdrnav{position:absolute;top:100%;left:0;right:0;flex-direction:column !important;align-items:stretch !important;gap:0 !important;background:var(--color-bg);border-bottom:1px solid var(--color-divider);box-shadow:var(--shadow-md);max-height:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-height .25s ease,opacity .2s ease;padding:0 var(--space-6) !important}
+    .hdrnav a{width:100%;padding:13px 0 !important;border-bottom:1px solid var(--color-divider);font-size:16px}
+    .hdrnav a.btn{margin:var(--space-3) 0 var(--space-4) !important;text-align:center;border-bottom:none !important;padding:10px 14px !important;font-size:15px !important}
+    .navtoggle-cb:checked ~ .hdrnav{max-height:80vh;opacity:1;pointer-events:auto;padding:var(--space-2) var(--space-6) var(--space-4) !important}
   }
   .btn{border-radius:6px}
   /*lh*/body,p,li,dd,blockquote,figcaption{line-height:1.4}
@@ -96,11 +97,14 @@
   <header style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:1px solid var(--color-divider);animation:hdrshadow linear both;animation-timeline:scroll();animation-range:0 70px;width:100vw;margin-left:calc(50% - 50vw);margin-top:calc(var(--space-6) * -1)">
     <div class="hdrbar" style="max-width:1080px;margin:0 auto;padding:var(--space-3) var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap">
     <a href="/" aria-label="MG.Coaching — accueil" style="display:flex;align-items:center;text-decoration:none"><img src="/logo-mgcoaching.png" alt="MG.Coaching" width="66" height="80" class="hdrlogo" style="display:block;height:80px;width:auto"></a>
+    <input type="checkbox" id="navtoggle" class="navtoggle-cb" style="display:none">
+    <label for="navtoggle" class="navtoggle-btn" aria-label="Menu" style="display:none;flex-direction:column;gap:5px"><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span></label>
     <nav class="hdrnav" style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
       <a class="navlink" href="/accompagnements">Accompagnements</a>
       <a class="navlink" href="/mon-parcours">Mon parcours</a>
       <a class="navlink" href="/ou-en-etes-vous">Où en êtes-vous</a>
       <a class="navlink" href="/echangeons">Échangeons</a>
+      <a class="btn btn-primary" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Premier appel offert</a>
     </nav>
       </div>
   </header>

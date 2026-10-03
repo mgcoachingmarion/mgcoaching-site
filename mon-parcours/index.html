@@ -39,12 +39,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@400;500;600;700&display=swap">
 <style>
   @media (max-width:720px){
-    .hdrbar{flex-wrap:nowrap !important;padding-left:var(--space-4) !important;padding-right:0 !important}
+    .hdrbar{flex-wrap:nowrap !important;position:relative}
     .hdrlogo{height:36px !important}
-    .hdrnav{flex-wrap:nowrap !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;gap:var(--space-3) !important;flex:1 1 auto;min-width:0;justify-content:flex-start;padding:2px var(--space-4) 2px 0;mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent 100%);-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent 100%)}
-    .hdrnav::-webkit-scrollbar{display:none}
-    .hdrnav a{white-space:nowrap;flex:none;scroll-snap-align:start;font-size:14px}
-    .hdrnav a.btn{padding:8px 14px !important;font-size:14px !important}
+    .navtoggle-btn{display:flex !important;align-items:center;justify-content:center;width:40px;height:40px;cursor:pointer;flex:none;margin-left:auto}
+    .hdrnav{position:absolute;top:100%;left:0;right:0;flex-direction:column !important;align-items:stretch !important;gap:0 !important;background:var(--color-bg);border-bottom:1px solid var(--color-divider);box-shadow:var(--shadow-md);max-height:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-height .25s ease,opacity .2s ease;padding:0 var(--space-6) !important}
+    .hdrnav a{width:100%;padding:13px 0 !important;border-bottom:1px solid var(--color-divider);font-size:16px}
+    .hdrnav a.btn{margin:var(--space-3) 0 var(--space-4) !important;text-align:center;border-bottom:none !important;padding:10px 14px !important;font-size:15px !important}
+    .navtoggle-cb:checked ~ .hdrnav{max-height:80vh;opacity:1;pointer-events:auto;padding:var(--space-2) var(--space-6) var(--space-4) !important}
   }
   @media (prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}.rv.in{opacity:1;transform:none}}
   .btn{border-radius:6px}
@@ -130,6 +131,8 @@
   <header style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:1px solid var(--color-divider);animation:hdrshadow linear both;animation-timeline:scroll();animation-range:0 70px;width:100vw;margin-left:calc(50% - 50vw);margin-top:calc(var(--space-6) * -1)">
     <div class="hdrbar" style="max-width:1080px;margin:0 auto;padding:var(--space-3) var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap">
     <a href="/" aria-label="MG.Coaching — accueil" style="display:flex;align-items:center;text-decoration:none"><img src="/logo-mgcoaching.png" alt="MG.Coaching" width="66" height="80" class="hdrlogo" style="display:block;height:80px;width:auto"></a>
+    <input type="checkbox" id="navtoggle" class="navtoggle-cb" style="display:none">
+    <label for="navtoggle" class="navtoggle-btn" aria-label="Menu" style="display:none;flex-direction:column;gap:5px"><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span></label>
     <nav class="hdrnav" style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
       <a class="navlink" href="/accompagnements">Accompagnements</a>
       <a class="navlink" href="/mon-parcours" style="color:var(--color-accent-700)">Mon parcours</a>
@@ -177,14 +180,22 @@
         </div>
         <div style="display:grid;gap:var(--space-1);padding:var(--space-3) 0;border-top:1px solid var(--color-divider)">
           <div style="font-size:13px;letter-spacing:0.08em;color:var(--color-accent-700)">2026</div>
-          <div style="font-size:17px;line-height:1.4;text-align:justify;hyphens:auto"><strong style="color:#a1473e">ECH — École de Coaching Holistique</strong><br>Formation certifiante : neurosciences, libérations émotionnelles, développement de la créativité, régulation du système nerveux<br><span style="font-size:15px;color:var(--color-neutral-700)">J'y ai appris à écouter la personne dans toutes ses dimensions : le corps, l'esprit, le cœur, le cerveau</span></div>
+          <div style="font-size:17px;line-height:1.4;text-align:justify;hyphens:auto"><strong style="color:#a1473e">Leadership Éthique</strong><br>Formation Développement du Potentiel Créatif et d'Innovation — pédagogie Consciens'Evolution<br><br><strong style="color:#a1473e">ECH — École de Coaching Holistique</strong><br>Formation certifiante Coach & Praticienne Théorie Polyvagale<br><span style="font-size:15px;color:var(--color-neutral-700)">J'y ai appris le cadre, la posture, les outils de neurosciences et de libération émotionnelle pour accompagner mes coaché(e)s dans toutes leurs dimensions humaines (physique, émotionnelle, mentale, créative)</span></div>
         </div>
       </div>
       <div>
         <h2 class="sub" style="font-size:clamp(20px,2.4vw,28px);line-height:1.35;margin:0 0 var(--space-4)">Expériences</h2>
         <div style="display:grid;gap:var(--space-1);padding:var(--space-3) 0;border-top:1px solid var(--color-divider)">
-        <div style="font-size:13px;letter-spacing:0.08em;color:var(--color-accent-700)">2016 → aujourd'hui</div>
-        <div style="font-size:17px;line-height:1.4;text-align:justify;hyphens:auto">Mon parcours professionnel s'est construit autour des relations humaines et de la gestion de projet, dans des métiers de commerciale et de Customer Success Director. J'ai travaillé dans des grands groupes, cabinets de conseil (Wavestone) ou secteur public (Transdev), et des start-up (Flixbus, Rise Up, 365Talents). C'est lors de ces expériences que j'ai renforcé mon écoute active, ma capacité à percevoir les non-dits, et à résoudre les problèmes. Toujours avec la même intuition : ce qui compte se joue rarement là où on le regarde. C'est pourquoi j'ai choisi de faire de cette intuition mon métier, et d'accompagner les personnes là où ça se joue vraiment.</div>
+          <div style="font-size:13px;letter-spacing:0.08em;color:var(--color-accent-700)">2016 → aujourd'hui</div>
+          <div style="font-size:17px;line-height:1.4;text-align:justify;hyphens:auto"><strong style="color:#a1473e">Commerciale & Customer Success Director</strong><br><span style="font-size:15px;color:var(--color-neutral-700)">Un parcours construit autour des relations humaines et de la gestion de projet</span></div>
+        </div>
+        <div style="display:grid;gap:var(--space-1);padding:var(--space-3) 0;border-top:1px solid var(--color-divider)">
+          <div style="font-size:13px;letter-spacing:0.08em;color:var(--color-accent-700)">Où j'ai travaillé</div>
+          <div style="font-size:17px;line-height:1.4"><strong style="color:#a1473e">Grands groupes, secteur public et start-up</strong><br><span style="font-size:15px;color:var(--color-neutral-700)">Cabinet de conseil : Wavestone<br>Secteur public : Transdev<br>Start-up : Flixbus, Rise Up, 365Talents</span></div>
+        </div>
+        <div style="display:grid;gap:var(--space-1);padding:var(--space-3) 0;border-top:1px solid var(--color-divider)">
+          <div style="font-size:13px;letter-spacing:0.08em;color:var(--color-accent-700)">Ce que j'y ai renforcé</div>
+          <div style="font-size:17px;line-height:1.4;text-align:justify;hyphens:auto"><strong style="color:#a1473e">Écoute active, perception des non-dits, résolution de problèmes</strong><br><span style="font-size:15px;color:var(--color-neutral-700)">Toujours avec la même intuition : ce qui compte se joue rarement là où on le regarde. C'est pourquoi j'ai choisi de faire de cette intuition mon métier, et d'accompagner les personnes là où ça se joue vraiment</span></div>
         </div>
       </div>
     </div>
