@@ -202,8 +202,8 @@
         <h2 class="sub cta" style="font-size:clamp(20px,2.2vw,26px);line-height:1.2;margin:0 0 var(--space-3)">Partagez-moi vos réponses</h2>
         <div style="align-self:start">
           <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
-            <a class="btn btn-primary" href="{{ gmailHref }}" style="text-decoration:none">Gmail</a>
-            <a class="btn btn-secondary" href="{{ mailHref }}" style="text-decoration:none">Outlook</a>
+            <a class="btn btn-primary" href="{{ gmailHref }}" target="{{ gmailTarget }}" rel="noopener" style="text-decoration:none">Gmail</a>
+            <a class="btn btn-secondary" href="{{ outlookHref }}" target="_blank" rel="noopener" style="text-decoration:none">Outlook</a>
           </div>
           <p style="font-size:14px;line-height:1.4;margin:var(--space-3) 0 0;color:var(--color-neutral-700)">Le brouillon s'ouvre prérempli — il n'y a qu'à compléter. Vos réponses ne sont pas enregistrées sur le site. Elles sont partagées uniquement si vous l'envoyez.</p>
         </div>
@@ -267,12 +267,15 @@ class Component extends DCLogic {
     const lines = picked.length ? picked.map(t => '- ' + t).join('\n') : '(aucune phrase cochée)';
     const body = encodeURIComponent('Bonjour Marion,\n\nVoici ce que j\'ai coché :\n\n' + lines + '\n\nNom et prénom :\nÂge :\nTéléphone :\nCe que j\'aimerais aborder :\nMes disponibilités :\nMerci,\n');
     const to = 'contact@mgcoaching.io';
+    // Sur ordinateur, mailto ouvre le logiciel de messagerie par défaut (souvent Outlook) : le bouton Gmail ouvre Gmail web à la place
+    const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
 
     return {
       tally, title, reading, offerName, pct,
       onToggle: () => this.setState(this.read()),
       mailHref: 'mailto:' + to + '?subject=' + subject + '&body=' + body,
-      gmailHref: 'mailto:' + to + '?subject=' + subject + '&body=' + body,
+      gmailHref: mobile ? 'mailto:' + to + '?subject=' + subject + '&body=' + body : 'https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&su=' + subject + '&body=' + body,
+      gmailTarget: mobile ? '_self' : '_blank',
       outlookHref: 'https://outlook.live.com/mail/0/deeplink/compose?to=' + to + '&subject=' + subject + '&body=' + body,
     };
   }
