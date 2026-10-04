@@ -133,7 +133,7 @@
 
   <header style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:1px solid var(--color-divider);animation:hdrshadow linear both;animation-timeline:scroll();animation-range:0 70px;width:100vw;margin-left:calc(50% - 50vw);margin-top:calc(var(--space-6) * -1)">
     <div class="hdrbar" style="max-width:1080px;margin:0 auto;padding:var(--space-3) var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap">
-      <a href="/" aria-label="MG.Coaching — accueil" style="display:flex;align-items:center;text-decoration:none"><img src="/logo-mgcoaching.png" alt="MG.Coaching" width="66" height="80" class="hdrlogo" style="display:block;height:80px;width:auto"></a>
+      <a href="/" aria-label="MG.Coaching - accueil" style="display:flex;align-items:center;text-decoration:none"><img src="/logo-mgcoaching.png" alt="MG.Coaching" width="66" height="80" class="hdrlogo" style="display:block;height:80px;width:auto"></a>
     <input type="checkbox" id="navtoggle" class="navtoggle-cb" style="display:none">
     <label for="navtoggle" class="navtoggle-btn" aria-label="Menu" style="display:none;flex-direction:column;gap:5px"><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span></label>
       <nav class="hdrnav" style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
@@ -187,7 +187,7 @@
         </sc-if>
         <p style="font-size:17px;line-height:1.4;margin:0;text-align:justify;hyphens:auto">{{ reading }}</p>
       </div>
-      <p style="font-size:17px;line-height:1.4;margin:var(--space-6) 0 var(--space-4)">Cette lecture n'est pas un verdict. Elle sert à nommer un point de départ — le reste se dit de vive voix.</p>
+      <p style="font-size:17px;line-height:1.4;margin:var(--space-6) 0 var(--space-4)">Cette lecture n'est pas un verdict. Elle sert à nommer un point de départ - le reste se dit de vive voix.</p>
       <div style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
         <a class="btn btn-primary" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Premier appel offert</a>
         <a class="lk" href="/accompagnements" style="font-size:15px">Voir les accompagnements</a>
@@ -205,7 +205,7 @@
             <a class="btn btn-primary" href="{{ gmailHref }}" target="{{ gmailTarget }}" rel="noopener" style="text-decoration:none">Gmail</a>
             <a class="btn btn-secondary" href="{{ outlookHref }}" target="_blank" rel="noopener" style="text-decoration:none">Outlook</a>
           </div>
-          <p style="font-size:14px;line-height:1.4;margin:var(--space-3) 0 0;color:var(--color-neutral-700)">Le brouillon s'ouvre prérempli — il n'y a qu'à compléter. Vos réponses ne sont pas enregistrées sur le site. Elles sont partagées uniquement si vous l'envoyez.</p>
+          <p style="font-size:14px;line-height:1.4;margin:var(--space-3) 0 0;color:var(--color-neutral-700)">Le brouillon s'ouvre prérempli - il n'y a qu'à compléter. Vos réponses ne sont pas enregistrées sur le site. Elles sont partagées uniquement si vous l'envoyez.</p>
         </div>
       </div>
     </div>
@@ -246,7 +246,7 @@ class Component extends DCLogic {
     let title, reading;
     if (autonomyCount >= 2) {
       title = "Un vrai chapitre à écrire";
-      reading = "Plusieurs choses se répètent et se répondent : c'est un fonctionnement d'ensemble, pas un point isolé. Le Récit est fait pour ça — dix séances pour dénouer les schémas, expérimenter autrement et repartir avec vos propres outils.";
+      reading = "Plusieurs choses se répètent et se répondent : c'est un fonctionnement d'ensemble, pas un point isolé. Le Récit est fait pour ça - dix séances pour dénouer les schémas, expérimenter autrement et repartir avec vos propres outils.";
     } else if (n === 0) {
       title = "Commencez par cocher";
       reading = "Rien de coché pour l'instant. Cochez les phrases qui vous parlent dans les sections 01 et 02 pour avoir votre diagnostic.";
@@ -255,7 +255,7 @@ class Component extends DCLogic {
       reading = "Vous cherchez surtout à mieux vous connaître. Le premier chapitre est fait pour ça : un test de personnalité débriefé en 90 minutes, pour poser un premier regard sur vous et tester le fonctionnement du coaching. C'est un point de départ, pour des premières pistes d'action.";
     } else {
       title = "Un vrai chapitre à écrire";
-      reading = "Plusieurs choses se répètent et se répondent : c'est un fonctionnement d'ensemble, pas un point isolé. Le Récit est fait pour ça — dix séances pour dénouer les schémas, expérimenter autrement et repartir avec vos propres outils.";
+      reading = "Plusieurs choses se répètent et se répondent : c'est un fonctionnement d'ensemble, pas un point isolé. Le Récit est fait pour ça - dix séances pour dénouer les schémas, expérimenter autrement et repartir avec vos propres outils.";
     }
 
     const tally = n === 0 ? 'Aucune phrase cochée' : (n === 1 ? '1 phrase sur 12 cochée' : n + ' phrases sur 12 cochées');
@@ -263,7 +263,7 @@ class Component extends DCLogic {
     const offerName = n === 0 ? '' : (OFFER_BY_TITLE[title] || 'Le Récit');
     const pct = Math.round((n / 12) * 100);
 
-    const subject = encodeURIComponent('Où en êtes-vous — mes réponses');
+    const subject = encodeURIComponent('Où en êtes-vous - mes réponses');
     const lines = picked.length ? picked.map(t => '- ' + t).join('\n') : '(aucune phrase cochée)';
     const body = encodeURIComponent('Bonjour Marion,\n\nVoici ce que j\'ai coché :\n\n' + lines + '\n\nNom et prénom :\nÂge :\nTéléphone :\nCe que j\'aimerais aborder :\nMes disponibilités :\nMerci,\n');
     const to = 'contact@mgcoaching.io';
