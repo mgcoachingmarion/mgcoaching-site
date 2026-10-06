@@ -363,15 +363,21 @@ class Component extends DCLogic {
   move(id, dir) {
     const el = document.getElementById(id);
     if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth, behavior: 'smooth' });
-    setTimeout(() => this.syncHeight(id), 350);
+    this._idx = this._idx || {};
+    const i = Math.max(0, Math.min(el.children.length - 1, (this._idx[id] || 0) + dir));
+    this._idx[id] = i;
+    // On vise le début exact du témoignage : avancer d'une largeur de cadre oubliait l'espace entre deux témoignages
+    el.scrollTo({ left: el.children[i].offsetLeft - el.children[0].offsetLeft, behavior: 'smooth' });
+    this.syncHeight(id, true);
   }
-  syncHeight(id) {
+  syncHeight(id, keepScroll) {
     const el = document.getElementById(id);
     if (!el) return;
-    const idx = Math.round(el.scrollLeft / el.clientWidth);
-    const active = el.children[idx];
-    if (active) el.style.height = active.getBoundingClientRect().height + 'px';
+    const i = (this._idx && this._idx[id]) || 0;
+    const active = el.children[i];
+    if (!active) return;
+    if (!keepScroll) el.scrollLeft = active.offsetLeft - el.children[0].offsetLeft;
+    el.style.height = active.getBoundingClientRect().height + 'px';
   }
   renderVals() {
     return {
