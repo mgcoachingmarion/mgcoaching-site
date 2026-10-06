@@ -84,6 +84,9 @@
   }
   .brand{color:var(--color-accent-700)}
   @keyframes hdrshadow{from{box-shadow:0 2px 12px rgba(53,18,1,0)}to{box-shadow:0 2px 12px rgba(53,18,1,0.13)}}
+  header{transition:transform .35s ease}
+  @media (max-width:720px){header.hdr-hidden{transform:translateY(calc(-100% - 16px))}}
+  @media (prefers-reduced-motion:reduce){header{transition:none}}
 
   body,p,li,td,th,label,summary,input,textarea,button,.btn{font-family:'Nunito',sans-serif}
   h1,h2,h3,h4{font-family:'Lexend Exa',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0;color:#a1473e}
@@ -204,6 +207,17 @@
 
 class Component extends DCLogic {
   componentDidMount() {
+    // Mobile : le header glisse hors de l'écran quand on descend et revient dès qu'on remonte (sur ordinateur il reste fixe)
+    const hdr = document.querySelector('header');
+    let lastY = window.scrollY;
+    this._hdrScroll = () => {
+      const y = window.scrollY, cb = document.getElementById('navtoggle');
+      if (Math.abs(y - lastY) < 6) return;
+      const hide = y > lastY && y > 80 && window.matchMedia('(max-width:720px)').matches && !(cb && cb.checked);
+      if (hdr) hdr.classList.toggle('hdr-hidden', hide);
+      lastY = y;
+    };
+    window.addEventListener('scroll', this._hdrScroll, { passive: true });
     // Bouton Gmail : sur ordinateur, mailto ouvre le logiciel de messagerie par défaut (souvent Outlook) ; on ouvre Gmail web à la place
     if (!(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent)))) document.querySelectorAll('a[data-gmail]').forEach(a => { a.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=contact@mgcoaching.io&' + a.getAttribute('href').split('?')[1].replace('subject=', 'su='); a.target = '_blank'; a.rel = 'noopener'; });
     const reveal = () => { const h = window.innerHeight; document.querySelectorAll('.rv:not(.in)').forEach(el => { if (el.getBoundingClientRect().top < h * 0.92) el.classList.add('in'); }); };
@@ -212,7 +226,7 @@ class Component extends DCLogic {
     window.addEventListener('scroll', reveal, { passive: true }); document.addEventListener('scroll', reveal, { passive: true, capture: true });
     reveal(); this._rvT = setTimeout(() => document.querySelectorAll('.rv').forEach(el => el.classList.add('in')), 4000);
   }
-  componentWillUnmount() { window.removeEventListener('scroll', this._rv); document.removeEventListener('scroll', this._rv, true); clearTimeout(this._rvT); }
+  componentWillUnmount() { window.removeEventListener('scroll', this._hdrScroll); window.removeEventListener('scroll', this._rv); document.removeEventListener('scroll', this._rv, true); clearTimeout(this._rvT); }
 }
 </script>
 </body>

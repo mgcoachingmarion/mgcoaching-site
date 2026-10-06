@@ -55,6 +55,9 @@
     --color-neutral-600:#7a5542;--color-neutral-700:#6b4632;--color-neutral-800:#4a2a16;
   }
   @keyframes hdrshadow{from{box-shadow:0 2px 12px rgba(53,18,1,0)}to{box-shadow:0 2px 12px rgba(53,18,1,0.13)}}
+  header{transition:transform .35s ease}
+  @media (max-width:720px){header.hdr-hidden{transform:translateY(calc(-100% - 16px))}}
+  @media (prefers-reduced-motion:reduce){header{transition:none}}
 
   body,p,li,td,th,label,summary,input,textarea,button,.btn{font-family:'Nunito',sans-serif}
   h1,h2,h3,h4{font-family:'Lexend Exa',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0;color:#a1473e}
@@ -147,5 +150,24 @@
   </footer>
 </div>
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    // Mobile : le header glisse hors de l'écran quand on descend et revient dès qu'on remonte (sur ordinateur il reste fixe)
+    const hdr = document.querySelector('header');
+    let lastY = window.scrollY;
+    this._hdrScroll = () => {
+      const y = window.scrollY, cb = document.getElementById('navtoggle');
+      if (Math.abs(y - lastY) < 6) return;
+      const hide = y > lastY && y > 80 && window.matchMedia('(max-width:720px)').matches && !(cb && cb.checked);
+      if (hdr) hdr.classList.toggle('hdr-hidden', hide);
+      lastY = y;
+    };
+    window.addEventListener('scroll', this._hdrScroll, { passive: true });
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this._hdrScroll); }
+  renderVals() { return {}; }
+}
+</script>
 </body>
 </html>
