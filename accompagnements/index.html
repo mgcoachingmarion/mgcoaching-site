@@ -373,9 +373,15 @@ class Component extends DCLogic {
     window.addEventListener('scroll', reveal, { passive: true }); document.addEventListener('scroll', reveal, { passive: true, capture: true });
     reveal(); this._rvT = setTimeout(() => document.querySelectorAll('.rv').forEach(el => el.classList.add('in')), 4000);
     this.syncHeight('tAll');
+    // La hauteur du cadre suit le témoignage affiché, y compris quand son texte se recale (polices chargées, largeur qui change)
+    const tEl = document.getElementById('tAll');
+    if (tEl && window.ResizeObserver) { this._tRO = new ResizeObserver(() => this.syncHeight('tAll', true)); Array.from(tEl.children).forEach(c => this._tRO.observe(c)); }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.syncHeight('tAll', true));
+    window.addEventListener('load', () => this.syncHeight('tAll', true));
+    this._tT = setTimeout(() => this.syncHeight('tAll', true), 1500);
     window.addEventListener('resize', () => this.syncHeight('tAll'));
   }
-  componentWillUnmount() { window.removeEventListener('scroll', this._hdrScroll); window.removeEventListener('hashchange', this._onHashChange); window.removeEventListener('scroll', this._rv); document.removeEventListener('scroll', this._rv, true); clearTimeout(this._rvT); }
+  componentWillUnmount() { if (this._tRO) this._tRO.disconnect(); clearTimeout(this._tT); window.removeEventListener('scroll', this._hdrScroll); window.removeEventListener('hashchange', this._onHashChange); window.removeEventListener('scroll', this._rv); document.removeEventListener('scroll', this._rv, true); clearTimeout(this._rvT); }
   move(id, dir) {
     const el = document.getElementById(id);
     if (!el) return;
@@ -393,7 +399,7 @@ class Component extends DCLogic {
     const active = el.children[i];
     if (!active) return;
     if (!keepScroll) el.scrollLeft = active.offsetLeft - el.children[0].offsetLeft;
-    el.style.height = active.getBoundingClientRect().height + 'px';
+    el.style.height = Math.ceil(active.offsetHeight) + 'px';
   }
   renderVals() {
     return {
