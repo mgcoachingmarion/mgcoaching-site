@@ -48,6 +48,7 @@
     .hdrnav a{width:100%;padding:13px 0 !important;border-bottom:1px solid var(--color-divider);font-size:16px}
     .hdrnav a.btn{margin:var(--space-3) 0 var(--space-4) !important;text-align:center;border-bottom:none !important;padding:10px 14px !important;font-size:15px !important}
     .navtoggle-cb:checked ~ .hdrnav{max-height:80vh;opacity:1;pointer-events:auto;padding:var(--space-2) var(--space-6) var(--space-4) !important}
+    .navtoggle-cb:checked ~ .navscrim{display:block !important;position:fixed;inset:0;z-index:-1;cursor:default}
   }
   .btn{border-radius:6px}
   @media (prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}.rv.in{opacity:1;transform:none}}
@@ -146,6 +147,7 @@
       <a class="navlink" href="/echangeons">Échangeons</a>
       <a class="btn btn-primary" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Premier appel offert</a>
     </nav>
+    <label for="navtoggle" class="navscrim" aria-hidden="true" style="display:none"></label>
       </div>
   </header>
 
