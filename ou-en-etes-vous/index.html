@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/support.js"></script>
+<!-- Umami : mesure d'audience et clics, sans cookie (actif uniquement sur mgcoaching.io) --><script defer src="https://cloud.umami.is/script.js" data-website-id="a19d4ef0-bc70-42e2-9907-49c3893a43b5" data-domains="mgcoaching.io"></script>
 </head>
 <body>
 <x-dc>
@@ -140,7 +141,7 @@
       <a class="navlink" href="/mon-parcours">Mon parcours</a>
       <a class="navlink" href="/ou-en-etes-vous" style="color:var(--color-accent-700)">Où en êtes-vous</a>
       <a class="navlink" href="/echangeons">Échangeons</a>
-      <a class="btn btn-primary" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Premier appel offert</a>
+      <a class="btn btn-primary" data-umami-event="Prise de RDV" data-umami-event-bouton="Premier appel offert (menu)" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Premier appel offert</a>
     </nav>
     <label for="navtoggle" class="navscrim" aria-hidden="true" style="display:none"></label>
       </div>
@@ -189,7 +190,7 @@
       </div>
       <p style="font-size:17px;line-height:1.4;margin:var(--space-6) 0 var(--space-4)">Cette lecture n'est pas un verdict. Elle sert à nommer un point de départ - le reste se dit de vive voix.</p>
       <div style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
-        <a class="btn btn-primary" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Premier appel offert</a>
+        <a class="btn btn-primary" data-umami-event="Prise de RDV" data-umami-event-bouton="Premier appel offert" href="https://calendar.app.google/jazUjCmCZjvVK4sN6" target="_blank" rel="noopener" style="text-decoration:none">Premier appel offert</a>
         <a class="lk" href="/accompagnements" style="font-size:15px">Voir les accompagnements</a>
       </div>
     </div>
@@ -202,8 +203,8 @@
         <h2 class="sub cta" style="font-size:clamp(20px,2.2vw,26px);line-height:1.2;margin:0 0 var(--space-3)">Partagez-moi vos réponses</h2>
         <div style="align-self:start">
           <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
-            <a class="btn btn-primary" href="{{ gmailHref }}" target="{{ gmailTarget }}" rel="noopener" style="text-decoration:none">Gmail</a>
-            <a class="btn btn-secondary" href="{{ outlookHref }}" target="_blank" rel="noopener" style="text-decoration:none">Outlook</a>
+            <a data-umami-event="Contact e-mail" data-umami-event-bouton="Gmail" class="btn btn-primary" href="{{ gmailHref }}" target="{{ gmailTarget }}" rel="noopener" style="text-decoration:none">Gmail</a>
+            <a data-umami-event="Contact e-mail" data-umami-event-bouton="Outlook" class="btn btn-secondary" href="{{ outlookHref }}" target="_blank" rel="noopener" style="text-decoration:none">Outlook</a>
           </div>
           <p style="font-size:14px;line-height:1.4;margin:var(--space-3) 0 0;color:var(--color-neutral-700)">Le brouillon s'ouvre prérempli - il n'y a qu'à compléter. Vos réponses ne sont pas enregistrées sur le site. Elles sont partagées uniquement si vous l'envoyez.</p>
         </div>
