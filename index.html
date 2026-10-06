@@ -123,6 +123,7 @@
   .marquee{animation:marquee 60s linear infinite}
   @media (prefers-reduced-motion:reduce){.marquee{animation:none}}
   @media (max-width:720px){.sec{grid-template-columns:minmax(0,1fr);gap:var(--space-4)}}
+  @media (max-width:720px){.duo{grid-template-columns:minmax(0,1fr) !important;gap:var(--space-6) !important}}
 
   @media (max-width:900px){.vidwrap{padding:16px !important}.vidbox{max-width:none !important}
     .m-h1{font-size:22px !important;line-height:1.25 !important}
@@ -212,7 +213,7 @@
 
   <section class="sec">
     <a class="ch" href="/accompagnements"><span class="chn">03</span>Notre champ d'action</a>
-    <div style="display:grid;grid-template-columns:minmax(0,var(--measure)) minmax(0,1fr);gap:var(--space-8);align-items:start">
+    <div class="duo" style="display:grid;grid-template-columns:minmax(0,var(--measure)) minmax(0,1fr);gap:var(--space-8);align-items:start">
       <div>
       <h2 class="sub" style="font-size:clamp(20px,2.4vw,28px);line-height:1.35;margin:0 0 var(--space-4);max-width:var(--measure)">Comprendre. Faire autrement.</h2>
       <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-4);max-width:var(--measure)">Je vous propose un espace de réflexion guidé, qui s'adapte à votre parcours et à vos besoins, pour vous permettre de mieux comprendre ce qui se joue en vous et de <strong>choisir comment y répondre</strong>.</p>
@@ -237,7 +238,7 @@
 
   <section class="sec">
     <a class="ch" href="/mon-parcours"><span class="chn">04</span>Qui suis-je</a>
-    <div style="display:grid;grid-template-columns:minmax(0,var(--measure)) minmax(0,1fr);gap:var(--space-8);align-items:stretch">
+    <div class="duo" style="display:grid;grid-template-columns:minmax(0,var(--measure)) minmax(0,1fr);gap:var(--space-8);align-items:stretch">
       <div>
         <h2 class="sub" style="font-size:clamp(20px,2.4vw,28px);line-height:1.35;margin:0 0 var(--space-4)">Je suis Marion, coach émotions et mindset.</h2>
         <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-4)">Ce que je transmets, je l'ai d'abord cherché pour moi.<br>Trente-cinq ans à explorer, à rencontrer, à cheminer, et une conviction restée intacte : <span style="color:var(--color-accent-2-700)">notre évolution nous appartient.</span></p>

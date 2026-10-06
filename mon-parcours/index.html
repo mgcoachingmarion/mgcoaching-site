@@ -113,6 +113,7 @@
   .rail{margin-left:calc(7em + var(--space-8))}
   @media (max-width:720px){.rail{margin-left:0}}
   @media (max-width:720px){.sec{grid-template-columns:minmax(0,1fr);gap:var(--space-4)}}
+  @media (max-width:720px){.duo{grid-template-columns:minmax(0,1fr) !important;gap:var(--space-6) !important}}
 
   @media (max-width:900px){
     .m-h1{font-size:22px !important;line-height:1.25 !important}
@@ -176,7 +177,7 @@
   </section>
   <section class="sec">
     <div class="ch"><span class="chn">03</span>Ma touche perso</div>
-    <div style="display:grid;grid-template-columns:minmax(0,var(--measure)) minmax(0,1fr);gap:var(--space-8);align-items:stretch">
+    <div class="duo" style="display:grid;grid-template-columns:minmax(0,var(--measure)) minmax(0,1fr);gap:var(--space-8);align-items:stretch">
       <div>
         <h2 class="sub" style="font-size:clamp(20px,2.4vw,28px);line-height:1.35;margin:0 0 var(--space-4)">Ce qui me caractérise</h2>
         <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-4)">Je fais partie des <strong>extraverties</strong>, mon énergie vient du groupe et des rencontres. Vous sentirez rapidement <strong>mon dynamisme</strong> qui vous met en mouvement !</p>
