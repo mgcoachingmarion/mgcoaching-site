@@ -121,7 +121,7 @@
   @media (min-width:900px){summary{white-space:nowrap}}
   @media (max-width:720px){.snake{display:none !important}}
   @container page (max-width:720px){.steps{grid-template-columns:repeat(2,minmax(0,1fr)) !important}.step-arrow{display:none}}
-  @container page (max-width:720px){.sec{grid-template-columns:1fr;gap:var(--space-4)}}
+  @container page (max-width:720px){.sec{grid-template-columns:minmax(0,1fr);gap:var(--space-4)}}
   details{padding:var(--space-3) 0;border-bottom:1px solid var(--color-divider)}
   summary{list-style:none;cursor:pointer;font-size:15.5px;line-height:1.4;display:flex;justify-content:space-between;gap:var(--space-4)}
   summary::-webkit-details-marker{display:none}

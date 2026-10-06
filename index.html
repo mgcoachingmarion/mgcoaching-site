@@ -122,7 +122,7 @@
   @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .marquee{animation:marquee 60s linear infinite}
   @media (prefers-reduced-motion:reduce){.marquee{animation:none}}
-  @media (max-width:720px){.sec{grid-template-columns:1fr;gap:var(--space-4)}}
+  @media (max-width:720px){.sec{grid-template-columns:minmax(0,1fr);gap:var(--space-4)}}
 
   @media (max-width:900px){.vidwrap{padding:16px !important}.vidbox{max-width:none !important}
     .m-h1{font-size:22px !important;line-height:1.25 !important}

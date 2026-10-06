@@ -110,7 +110,7 @@
   .sec{padding-bottom:calc(var(--space-8) * 1.6);display:grid;grid-template-columns:minmax(0,7em) minmax(0,1fr);gap:var(--space-8)}
   .rail{margin-left:calc(7em + var(--space-8))}
   @media (max-width:720px){.rail{margin-left:0}}
-  @media (max-width:720px){.sec{grid-template-columns:1fr;gap:var(--space-4)}}
+  @media (max-width:720px){.sec{grid-template-columns:minmax(0,1fr);gap:var(--space-4)}}
   textarea.input{min-height:8em;resize:vertical;font-family:var(--font-body)}
 
   @media (max-width:900px){
