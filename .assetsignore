@@ -1,0 +1,6 @@
+.git
+.assetsignore
+wrangler.jsonc
+_ds/**/readme.md
+_ds/**/_ds_manifest.json
+_ds/**/_adherence.oxlintrc.json

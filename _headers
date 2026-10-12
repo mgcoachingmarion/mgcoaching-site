@@ -1,0 +1,14 @@
+/uploads/*
+  Cache-Control: public, max-age=604800
+
+/_ds/*
+  Cache-Control: public, max-age=604800
+
+/*.png
+  Cache-Control: public, max-age=604800
+
+/og-image.jpg
+  Cache-Control: public, max-age=604800
+
+/support.js
+  Cache-Control: public, max-age=86400
