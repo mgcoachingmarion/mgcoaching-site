@@ -12,3 +12,10 @@
 
 /support.js
   Cache-Control: public, max-age=86400
+
+/r/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: public, max-age=604800
+
+/cahiers/ressources.json
+  Cache-Control: public, max-age=300

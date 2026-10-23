@@ -1,10 +1,21 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "mgcoaching",
+  "name": "mgcoaching-site",
+  "main": "worker/index.js",
   "compatibility_date": "2026-09-26",
   "assets": {
     "directory": "./",
+    "binding": "ASSETS",
     "html_handling": "drop-trailing-slash",
-    "not_found_handling": "404-page"
-  }
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  // Identifiant de la liste « Newsletter » dans Brevo (#5). La clé API, elle, est un secret Cloudflare.
+  "vars": {
+    "BREVO_NEWSLETTER_LIST_ID": 6
+  },
+  // Limite les demandes de cahier à 5 par minute et par adresse IP
+  "ratelimits": [
+    { "name": "LIMITE_CAHIERS", "namespace_id": "1001", "simple": { "limit": 5, "period": 60 } }
+  ]
 }
