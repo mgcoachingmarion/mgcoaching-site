@@ -148,6 +148,7 @@
   .cdlg-x:hover{background:#f3ddd6}
   .cdlg h2{font-size:clamp(18px,2vw,21px);line-height:1.25;margin:0 0 var(--space-4);padding-right:36px}
   .cdlg form{display:flex;flex-direction:column;gap:var(--space-4);margin:0}
+  .cdlg [hidden]{display:none !important}
   .cdlg label.fld{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600}
   .cdlg input[type=email]{font:inherit;font-weight:400;font-size:17px;padding:12px 14px;border:1px solid #d9a49c;border-radius:6px;background:#fff;color:var(--color-text);width:100%;box-sizing:border-box}
   .cdlg input[type=email]:focus{outline:2px solid #a1473e;outline-offset:1px}
@@ -158,7 +159,15 @@
   .cdlg .btn{align-self:flex-start;cursor:pointer}
   .cdlg .btn[disabled]{opacity:.6;cursor:progress}
   .cdlg .err{margin:0;font-size:15px;color:#7d352e;background:#f3ddd6;border-radius:6px;padding:10px 12px;text-align:left}
-  .cdlg .ok p{margin:0 0 var(--space-4);font-size:17px;text-align:left}
+  .cdlg .err a{color:inherit;text-decoration:underline}
+  .cdlg input[type=email][aria-invalid=true]{border-color:#a1473e;border-width:2px;padding:11px 13px}
+  .cdlg .fld-err{margin:0;font-size:14px;font-weight:400;color:#7d352e;text-align:left}
+  .cdlg .spin{display:inline-block;width:14px;height:14px;margin-right:8px;vertical-align:-2px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:cspin .8s linear infinite}
+  @keyframes cspin{to{transform:rotate(360deg)}}
+  .cdlg .ok-band{display:flex;align-items:center;gap:10px;margin:0 0 var(--space-4);padding:12px 14px;border-radius:6px;background:#e3eed8;color:#2f5317;font-size:17px;font-weight:700;text-align:left}
+  .cdlg .ok-band svg{flex:none}
+  .cdlg .ok p{margin:0 0 var(--space-3);font-size:16px;text-align:left;overflow-wrap:anywhere}
+  .cdlg .ok .btn{margin-top:var(--space-2)}
   @media (max-width:720px){
     .cdlg{width:100%;max-width:100%;margin:auto 0 0;border-radius:16px 16px 0 0;max-height:92vh}
     .cdlg-in{padding-bottom:calc(var(--space-6) + env(safe-area-inset-bottom))}
@@ -214,7 +223,8 @@
       <h2 class="sub" id="cdlg-titre"></h2>
       <form id="cdlg-form" novalidate>
         <label class="fld">Votre adresse e-mail
-          <input type="email" name="email" id="cdlg-email" autocomplete="email" inputmode="email" required placeholder="prenom@exemple.fr">
+          <input type="email" name="email" id="cdlg-email" autocomplete="email" inputmode="email" required placeholder="prenom@exemple.fr" aria-describedby="cdlg-ferr">
+          <span class="fld-err" id="cdlg-ferr" hidden></span>
         </label>
         <div class="hp" aria-hidden="true"><label>Ne pas remplir ce champ <input type="text" name="site" id="cdlg-hp" tabindex="-1" autocomplete="off"></label></div>
         <label class="chk"><input type="checkbox" name="newsletter" id="cdlg-nl"><span>Je souhaite aussi recevoir les conseils et actualités de MG.Coaching</span></label>
@@ -223,8 +233,9 @@
         <p class="rgpd">Votre adresse sert uniquement à vous envoyer ce cahier. Si vous cochez la case, vous recevrez aussi mes conseils et actualités, avec un lien de désinscription dans chaque e-mail. En savoir plus : <a class="lk" href="/confidentialite">politique de confidentialité</a>.</p>
       </form>
       <div class="ok" id="cdlg-ok" hidden>
-        <p><strong>C'est envoyé, regardez votre boîte mail.</strong></p>
-        <p style="font-size:15px;color:var(--color-neutral-700)">Rien reçu d'ici quelques minutes ? Jetez un œil aux onglets Promotions ou Spam.</p>
+        <p class="ok-band" role="status"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M7.5 12.5l3 3 6-6.5"></path></svg>Votre cahier est parti</p>
+        <p>Il arrive dans quelques minutes à <strong id="cdlg-adresse"></strong>.</p>
+        <p style="font-size:15px;color:var(--color-neutral-700)">Pas reçu d'ici 10 minutes ? Regardez dans les onglets Promotions ou Spam.</p>
         <button type="button" class="btn btn-secondary" id="cdlg-fermer">Fermer</button>
       </div>
     </div>
@@ -312,12 +323,28 @@ class Component extends DCLogic {
       grid.appendChild(carte);
     });
 
-    const erreur = msg => { err.textContent = msg; err.hidden = !msg; };
+    const ferr = document.getElementById('cdlg-ferr');
+    const libelle = () => courant.bouton || 'Recevoir le cahier';
+    // Message général sous la case newsletter (erreurs serveur) ; html seulement pour nos propres textes avec lien
+    const erreur = (msg, html) => { if (html) err.innerHTML = msg; else err.textContent = msg; err.hidden = !msg; };
+    // Message sous le champ e-mail (adresse mal tapée), le champ passe en rouge
+    const erreurChamp = msg => { ferr.textContent = msg; ferr.hidden = !msg; email.setAttribute('aria-invalid', msg ? 'true' : 'false'); };
+    const ecrire = '<a href="mailto:contact@mgcoaching.io?subject=Cahier%20non%20re%C3%A7u" data-umami-event="Contact e-mail" data-umami-event-bouton="Lien e-mail (erreur Cahiers)">contact@mgcoaching.io</a>';
+    const diagnostic = a => {
+      if (!a) return 'Indiquez votre adresse e-mail.';
+      if (/\s/.test(a)) return 'L\'adresse ne doit pas contenir d\'espace.';
+      if (!a.includes('@')) return 'Il manque le @ dans l\'adresse.';
+      const [avant, apres] = a.split('@');
+      if (!avant || a.split('@').length > 2) return 'Vérifiez le début de l\'adresse, avant le @.';
+      if (!/\.[^.@]{2,}$/.test(apres)) return 'Il manque la fin de l\'adresse, par exemple @gmail.com.';
+      return '';
+    };
+    email.addEventListener('input', () => { if (!ferr.hidden) erreurChamp(''); });
     const ouvrir = (c, bouton) => {
       courant = c; opener = bouton;
       titre.textContent = c.titre;
-      form.reset(); form.hidden = false; ok.hidden = true; erreur('');
-      btn.disabled = false; btn.textContent = c.bouton || 'Recevoir le cahier';
+      form.reset(); form.hidden = false; ok.hidden = true; erreur(''); erreurChamp('');
+      btn.disabled = false; btn.textContent = libelle();
       dlg.showModal();
       email.focus();
     };
@@ -330,10 +357,11 @@ class Component extends DCLogic {
 
     form.addEventListener('submit', async e => {
       e.preventDefault();
-      erreur('');
+      erreur(''); erreurChamp('');
       const adresse = email.value.trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(adresse)) { erreur('Cette adresse e-mail ne semble pas valide.'); email.focus(); return; }
-      btn.disabled = true; btn.textContent = 'Envoi en cours';
+      const pb = diagnostic(adresse);
+      if (pb) { erreurChamp(pb); email.focus(); return; }
+      btn.disabled = true; btn.innerHTML = '<span class="spin" aria-hidden="true"></span>Envoi en cours…';
       let statut = 0;
       try {
         const r = await fetch('/api/cahiers', {
@@ -343,17 +371,18 @@ class Component extends DCLogic {
         });
         statut = r.status;
       } catch (x) { statut = 0; }
-      btn.disabled = false; btn.textContent = courant.bouton || 'Recevoir le cahier';
+      btn.disabled = false; btn.textContent = libelle();
       if (statut === 200) {
+        document.getElementById('cdlg-adresse').textContent = adresse;
         form.hidden = true; ok.hidden = false;
         document.getElementById('cdlg-fermer').focus();
         if (window.umami) window.umami.track('Cahier envoyé', { cahier: courant.id, newsletter: nl.checked ? 'oui' : 'non' });
       } else if (statut === 400) {
-        erreur('Cette adresse e-mail ne semble pas valide. Vérifiez-la et réessayez.'); email.focus();
+        erreur('Cette adresse n\'a pas été acceptée. Vérifiez qu\'elle est complète, sans espace, puis réessayez.'); email.focus();
       } else if (statut === 429) {
-        erreur('Beaucoup de demandes d\'un coup : réessayez dans une minute.');
+        erreur('Plusieurs demandes viennent d\'être faites depuis cet appareil. Patientez une minute, puis cliquez à nouveau.');
       } else {
-        erreur('L\'envoi n\'a pas abouti. Réessayez dans un instant, ou écrivez à contact@mgcoaching.io.');
+        erreur('Le cahier n\'a pas pu partir, et ça ne vient pas de vous. Réessayez dans une minute. Si ça bloque encore, écrivez-moi à ' + ecrire + ' : je vous l\'envoie à la main.', true);
       }
     });
   }
