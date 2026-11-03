@@ -122,6 +122,13 @@
   @media (max-width:720px){.sec{grid-template-columns:minmax(0,1fr);gap:var(--space-4)}}
   @media (max-width:720px){.duo{grid-template-columns:minmax(0,1fr) !important;gap:var(--space-6) !important}}
 
+  .transcript{margin-top:var(--space-4);padding:var(--space-3) 0;border-bottom:1px solid var(--color-divider)}
+  .transcript summary{list-style:none;cursor:pointer;font-size:15.5px;line-height:1.4;display:flex;justify-content:space-between;gap:var(--space-4)}
+  .transcript summary::-webkit-details-marker{display:none}
+  .transcript summary:hover{color:var(--color-accent-700)}
+  .transcript summary::after{content:"+";color:var(--color-accent-700);font-size:20px;line-height:1}
+  .transcript[open] summary::after{content:"–"}
+  .transcript p{font-size:17px;line-height:1.4;margin:var(--space-3) 0 0;color:var(--color-neutral-800);text-align:left}
   @media (max-width:900px){.vidwrap{padding:16px !important}.vidbox{max-width:none !important}
     .m-h1{font-size:22px !important;line-height:1.25 !important}
     .m-h1 .h1l{white-space:normal !important}
@@ -208,6 +215,14 @@
           <iframe title="Vos émotions décryptées en une vidéo" src="https://drive.google.com/file/d/1W2yHOS15hO_-Rzp6sUEZfSK1yD3FNd-O/preview" style="width:100%;height:100%;border:0" allow="autoplay" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"></iframe>
         </div>
       </div>
+      <details class="transcript">
+        <summary>Lire la transcription de la vidéo</summary>
+        <p>Bonjour, moi c'est Marion, coach émotions &amp; mindset. Bienvenue dans ma bibliothèque&nbsp;! Chaque livre présenté est un exemple de sujet que l'on peut travailler ensemble. Je vous en ouvre trois.</p>
+        <p>Ce premier livre, c'est celui de la colère. Je sens qu'il vous parle déjà&nbsp;? Cette émotion, vous la vivez en permanence, comme une boule de feu en vous… et un jour, sans prévenir, elle explose. Ensemble, on va la décrypter, la nommer avec vos mots, et surtout comprendre pourquoi elle est là et comment lui rendre sa juste place&nbsp;: celle d'une alerte, pas d'un mode de vie.</p>
+        <p>Un autre livre que j'adore, c'est le brouillard mental, aussi connu sous le nom du «&nbsp;hamster dans sa roue&nbsp;». Vos journées sont pleines du matin au soir, vous faites mille choses à la fois, sans une minute pour souffler. Dans votre tête, c'est «&nbsp;il faut, je dois&nbsp;», et vous n'avez jamais le temps. On va travailler ensemble le retour à l'instant présent&nbsp;: faire un pas de côté, retrouver de la lucidité dans votre rythme et vos pensées. C'est alors vous qui reprenez le contrôle du temps.</p>
+        <p>Et puis en dernier exemple, il y a ce livre-là, celui de la vague. La vie bouge, je ne vous apprends rien&nbsp;: ça va, ça vient, vous gérez à peu près. Quand ça se complique, vous vous faites aider&nbsp;: thérapie, approches douces… Vous allez mieux. Et puis la vague revient, et vous avez l'impression que tout est comme avant. Souvent, ce n'est pas un manque de volonté, mais plutôt de méthode. Mon rôle, c'est de vous outiller pour que vous appreniez à revenir en sécurité, par vous-même.</p>
+        <p>Chacun de ces livres raconte une histoire. Ce que je vous propose, c'est de redevenir le personnage principal de la vôtre. Si ça vous parle, écrivez-moi depuis la page <a class="lk" href="/echangeons">Échangeons</a> ou réservez un premier appel avec moi. À bientôt&nbsp;!</p>
+      </details>
     </div>
   </section>
 
