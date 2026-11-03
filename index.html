@@ -122,6 +122,11 @@
   @media (max-width:720px){.sec{grid-template-columns:minmax(0,1fr);gap:var(--space-4)}}
   @media (max-width:720px){.duo{grid-template-columns:minmax(0,1fr) !important;gap:var(--space-6) !important}}
 
+  .vidplay{all:unset;position:relative;display:block;width:100%;height:100%;cursor:pointer}
+  .vidplay img{display:block;width:100%;height:100%;object-fit:cover}
+  .vidplay-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(161,71,62,0.92);color:#fbeedb;display:flex;align-items:center;justify-content:center;padding-left:4px;box-sizing:border-box;box-shadow:0 10px 24px -8px rgba(0,0,0,0.5);transition:transform .2s ease}
+  .vidplay:hover .vidplay-icon,.vidplay:focus-visible .vidplay-icon{transform:translate(-50%,-50%) scale(1.08)}
+  .vidplay:focus-visible{outline:3px solid #f19c46;outline-offset:3px}
   .transcript{margin-top:var(--space-4);padding:var(--space-3) 0;border-bottom:1px solid var(--color-divider)}
   .transcript summary{list-style:none;cursor:pointer;font-size:15.5px;line-height:1.4;display:flex;justify-content:space-between;gap:var(--space-4)}
   .transcript summary::-webkit-details-marker{display:none}
@@ -147,7 +152,7 @@
     <div class="hdrbar" style="max-width:1080px;margin:0 auto;padding:var(--space-3) var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap">
     <a href="/" aria-label="MG.Coaching - accueil" style="display:flex;align-items:center;text-decoration:none"><img src="/logo-mgcoaching.png" alt="MG.Coaching" width="66" height="80" class="hdrlogo" style="display:block;height:80px;width:auto"></a>
     <input type="checkbox" id="navtoggle" class="navtoggle-cb" style="display:none">
-    <label for="navtoggle" class="navtoggle-btn" aria-label="Menu" style="display:none;flex-direction:column;gap:5px"><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span></label>
+    <label for="navtoggle" class="navtoggle-btn" style="display:none;flex-direction:column;gap:5px"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Menu</span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span><span style="display:block;width:22px;height:2px;background:var(--color-text)"></span></label>
     <nav class="hdrnav" style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
       <a class="navlink" href="/accompagnements">Accompagnements</a>
       <a class="navlink" href="/mon-parcours">Mon parcours</a>
@@ -163,7 +168,7 @@
 
  <section class="hero" style="padding:calc(var(--space-8) * 1.4) 0 calc(var(--space-8) * 1.6);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);align-items:center">
     <div style="position:relative;border-radius:6px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(53,18,1,0.4),0 16px 32px -16px rgba(53,18,1,0.22)">
-      <img src="/uploads/livre-fenetre.jpg" alt="Un livre ouvert près d'une fenêtre, éclairé par le soleil couchant sur la campagne" width="1024" height="1536" fetchpriority="high" style="display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 55%;filter:saturate(0.82) contrast(0.9) brightness(1.05)">
+      <img src="/uploads/livre-fenetre.jpg" srcset="/uploads/livre-fenetre-640.jpg 640w, /uploads/livre-fenetre.jpg 1024w" sizes="(max-width:720px) 100vw, 405px" alt="Un livre ouvert près d'une fenêtre, éclairé par le soleil couchant sur la campagne" width="1024" height="1536" fetchpriority="high" style="display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 55%;filter:saturate(0.82) contrast(0.9) brightness(1.05)">
       <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(245,225,197,0.16),rgba(245,225,197,0.08));box-shadow:inset 0 0 70px rgba(53,18,1,0.35);pointer-events:none"></div>
     </div>
     <div class="herot" style="position:relative;z-index:1;min-width:0;align-self:start;margin-top:12%;margin-left:calc(var(--space-8) * -2.2);background:#fbeedb;border-radius:3px;padding:var(--space-8) var(--space-6);box-shadow:0 24px 48px -20px rgba(53,18,1,0.35),0 6px 14px -8px rgba(53,18,1,0.18)">
@@ -212,7 +217,12 @@
       <h2 class="sub" style="font-size:clamp(20px,2.4vw,28px);line-height:1.35;margin:0 0 var(--space-4);max-width:var(--measure)">Colère, brouillard mental, émotions qui reviennent&nbsp;: trois livres à ouvrir ensemble</h2>
       <div class="vidwrap" style="max-width:var(--measure);background:#fbeedb;border-radius:14px;box-shadow:0 18px 36px -20px rgba(53,18,1,0.35),0 6px 12px -8px rgba(53,18,1,0.18);padding:48px;display:flex;justify-content:center">
         <div class="vidbox" style="aspect-ratio:9/19.5;max-width:340px;width:100%;border-radius:4px;overflow:hidden;background:#000">
-          <iframe title="Colère, brouillard mental, émotions qui reviennent : trois livres à ouvrir ensemble" src="https://drive.google.com/file/d/1W2yHOS15hO_-Rzp6sUEZfSK1yD3FNd-O/preview" style="width:100%;height:100%;border:0" allow="autoplay" allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"></iframe>
+          <!-- Aperçu léger : le lecteur Google Drive (3 Mo de scripts, cookie Google) ne se charge qu'au clic -->
+          <button type="button" class="vidplay" data-src="https://drive.google.com/file/d/1W2yHOS15hO_-Rzp6sUEZfSK1yD3FNd-O/preview" data-title="Colère, brouillard mental, émotions qui reviennent : trois livres à ouvrir ensemble" aria-label="Lire la vidéo : Colère, brouillard mental, émotions qui reviennent">
+            <img src="/uploads/video-bibliotheque-apercu.jpg" width="680" height="1209" loading="lazy" alt="Marion face caméra, chez elle, au début de la vidéo">
+            <span class="vidplay-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
+          </button>
+          <noscript><a class="lk" href="https://drive.google.com/file/d/1W2yHOS15hO_-Rzp6sUEZfSK1yD3FNd-O/view" target="_blank" rel="noopener">Voir la vidéo sur Google Drive</a></noscript>
         </div>
       </div>
       <details class="transcript">
@@ -247,7 +257,7 @@
       </div>
     </div>
 
-      <img src="/uploads/sentier-randonnee-800.jpg" width="800" height="1200" loading="lazy" alt="Une personne en chaussures de randonnée avance sur un sentier de bruyère, dans la lumière du soleil couchant" style="display:block;box-shadow:0 30px 60px -30px rgba(53,18,1,0.38),0 10px 22px -12px rgba(53,18,1,0.18);border-radius:6px;align-self:start;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center 45%;filter:saturate(0.82) contrast(0.9) brightness(1.05)">
+      <img src="/uploads/sentier-randonnee-800.jpg" srcset="/uploads/sentier-randonnee-560.jpg 560w, /uploads/sentier-randonnee-800.jpg 800w" sizes="(max-width:720px) 100vw, 424px" width="800" height="1200" loading="lazy" alt="Une personne en chaussures de randonnée avance sur un sentier de bruyère, dans la lumière du soleil couchant" style="display:block;box-shadow:0 30px 60px -30px rgba(53,18,1,0.38),0 10px 22px -12px rgba(53,18,1,0.18);border-radius:6px;align-self:start;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center 45%;filter:saturate(0.82) contrast(0.9) brightness(1.05)">
     </div>
   </section>
 
@@ -261,7 +271,7 @@
         <p style="font-size:17px;line-height:1.4;margin:0 0 var(--space-4)"><strong>Aujourd'hui je vous accompagne à retrouver de la lucidité sur vos émotions et vos pensées pour plus de sérénité et pouvoir redevenir le personnage principal de votre histoire.</strong></p>
         <a class="lk" href="/mon-parcours" style="font-size:15px">Mon parcours</a><span aria-hidden="true" style="margin:0 var(--space-3);color:var(--color-neutral-700)">·</span><a class="lk" href="/journal" style="font-size:15px">Ma lettre mensuelle</a>
       </div>
-      <img src="/uploads/portrait-accueil.jpg" width="1100" height="864" loading="lazy" alt="Portrait de Marion, souriante, le menton posé sur la main, devant une porte en bois rouge" style="display:block;box-shadow:0 30px 60px -30px rgba(53,18,1,0.38),0 10px 22px -12px rgba(53,18,1,0.18);border-radius:6px;align-self:start;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:62% center;filter:saturate(0.82) contrast(0.9) brightness(1.05)">
+      <img src="/uploads/portrait-accueil.jpg" srcset="/uploads/portrait-accueil-640.jpg 640w, /uploads/portrait-accueil.jpg 1100w" sizes="(max-width:720px) 100vw, 424px" width="1100" height="864" loading="lazy" alt="Portrait de Marion, souriante, le menton posé sur la main, devant une porte en bois rouge" style="display:block;box-shadow:0 30px 60px -30px rgba(53,18,1,0.38),0 10px 22px -12px rgba(53,18,1,0.18);border-radius:6px;align-self:start;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:62% center;filter:saturate(0.82) contrast(0.9) brightness(1.05)">
     </div>
   </section>
 
@@ -300,6 +310,15 @@ class Component extends DCLogic {
     document.querySelectorAll('#dc-root section, #dc-root blockquote').forEach(el => { if (el.getBoundingClientRect().top > window.innerHeight) el.classList.add('rv'); });
     window.addEventListener('scroll', reveal, { passive: true }); document.addEventListener('scroll', reveal, { passive: true, capture: true });
     reveal(); this._rvT = setTimeout(() => document.querySelectorAll('.rv').forEach(el => el.classList.add('in')), 4000);
+    // Vidéo : remplace l'aperçu par le lecteur Google Drive au premier clic
+    document.querySelectorAll('.vidplay').forEach(b => b.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = b.dataset.src; f.title = b.dataset.title;
+      f.allow = 'autoplay; fullscreen'; f.allowFullscreen = true;
+      f.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation allow-popups');
+      f.style.cssText = 'width:100%;height:100%;border:0';
+      b.replaceWith(f);
+    }, { once: true }));
   }
   componentWillUnmount() { window.removeEventListener('scroll', this._hdrScroll); window.removeEventListener('scroll', this._rv); document.removeEventListener('scroll', this._rv, true); clearTimeout(this._rvT); }
   renderVals() { return {}; }
