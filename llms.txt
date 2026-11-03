@@ -1,0 +1,20 @@
+# MG.Coaching
+
+> MG.Coaching est l'activité de coaching de Marion Génot, coach émotions et mindset : un coaching holistique en visio, partout en France, pour comprendre ses mécanismes, apaiser ses émotions et passer à l'action.
+
+Les séances ont lieu en visioconférence, en français. Le premier échange est un appel découverte de 30 minutes offert. Le coaching ne remplace pas un suivi médical ou une psychothérapie.
+
+## Pages principales
+
+- [Accueil](https://mgcoaching.io/): présentation de l'approche, exemples de problématiques travaillées et premier pas vers l'appel découverte.
+- [Accompagnements](https://mgcoaching.io/accompagnements): Le premier chapitre (Ennéagramme, 90 min) et Le Récit (10 séances) : méthode, déroulé, témoignages et questions fréquentes.
+- [Mon parcours](https://mgcoaching.io/mon-parcours): qui est Marion Génot, sa formation à l'École de Coaching Holistique et son parcours.
+- [Où en êtes-vous ?](https://mgcoaching.io/ou-en-etes-vous): douze phrases à cocher pour faire le point sur sa situation et trouver l'accompagnement qui correspond. Gratuit, sans inscription.
+- [Cahiers](https://mgcoaching.io/cahiers): cahiers d'exercices de coaching gratuits, envoyés par e-mail.
+- [Échangeons](https://mgcoaching.io/echangeons): réserver l'appel découverte de 30 minutes offert ou écrire à contact@mgcoaching.io.
+
+## Informations
+
+- [Mentions légales](https://mgcoaching.io/mentions-legales)
+- [Confidentialité](https://mgcoaching.io/confidentialite)
+- [Plan du site](https://mgcoaching.io/sitemap.xml)
